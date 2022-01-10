@@ -25,18 +25,20 @@ const App: NextPage = ({ children }) => {
         <IconMessage className="icon icon-message" />
       </ButtonApp.Message>
       <Wrapper.Drawer className={clsx(`${clsx({ 'in-active': !drawer?.isVisible })}`, { active: drawer?.isVisible })}>
-        <Direction.Row className="flex-end">
-          <ButtonApp.Close type="button" onClick={() => dispatch(toggleDrawer({ isVisible: false }))}>
-            <IconClose className="icon icon-close" />
-          </ButtonApp.Close>
-        </Direction.Row>
-        <Text.Title>Get in Touch</Text.Title>
-        <Input type="text" name="name" placeholder="Name" />
-        <Input type="text" name="email" placeholder="Email" />
-        <Input type="textArea" name="messsage" placeholder="Message" />
-        <Direction.Row className="flex-end">
-          <Button type="button">Submit</Button>
-        </Direction.Row>
+        <div className="drawer-container">
+          <Direction.Row className="flex-end">
+            <ButtonApp.Close type="button" onClick={() => dispatch(toggleDrawer({ isVisible: false }))}>
+              <IconClose className="icon icon-close" />
+            </ButtonApp.Close>
+          </Direction.Row>
+          <Text.Title>Get in Touch</Text.Title>
+          <Input type="text" name="name" placeholder="Name" />
+          <Input type="text" name="email" placeholder="Email" />
+          <Input type="textArea" name="messsage" placeholder="Message" />
+          <Direction.Row className="flex-end">
+            <Button type="button">Submit</Button>
+          </Direction.Row>
+        </div>
       </Wrapper.Drawer>
     </Wrapper.Container>
   );

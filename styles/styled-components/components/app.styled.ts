@@ -38,7 +38,6 @@ const DrawerWrapper = styled.div`
   background: transparent radial-gradient(closest-side at 91% 46%, #2D2D2D8C 0%, #1F1F1F 100%) 0% 0% no-repeat padding-box;
   height: 100%;
   box-shadow: 0px 3px 6px #0707073B;
-  padding: 90px;
   display: flex;
   flex-direction: column;
   &.active {
@@ -46,6 +45,9 @@ const DrawerWrapper = styled.div`
   }
   &.in-active {
     animation: ${AN.appearRight.Out} 300ms ease-out forwards;
+  }
+  .drawer-container {
+    padding: 90px;
   }
 `;
 
