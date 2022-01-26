@@ -3,6 +3,7 @@ import React from 'react';
 
 export type Drawer = {
   isVisible: boolean;
+  action: string;
 };
 
 export type InitialState = {
@@ -12,6 +13,7 @@ export type InitialState = {
 const initialState: InitialState = {
   drawer: {
     isVisible: false,
+    action: '',
   },
 };
 
@@ -22,6 +24,7 @@ const appSlice = createSlice({
     toggleDrawer(state, action: PayloadAction<Drawer>) {
       if (state.drawer) {
         state.drawer.isVisible = action.payload.isVisible;
+        state.drawer.action = action.payload.action;
       }
     },
   },

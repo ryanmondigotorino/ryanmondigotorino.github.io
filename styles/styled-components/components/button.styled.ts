@@ -5,12 +5,12 @@ export const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   width: auto;
-  height: 51px;
-  padding: 16px 35px;
+  height: 50px;
+  padding: 0 30px;
   align-items: center;
   color: ${colors.white};
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 1.8px;
   text-transform: uppercase;
   background-color: transparent;

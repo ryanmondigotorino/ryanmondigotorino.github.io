@@ -3,14 +3,11 @@ import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store';
 import { toggleDrawer } from 'redux/appSlice';
-import Input from 'components/Input';
-import Button from 'components/Button';
-
-import { Wrapper, Button as ButtonApp } from 'styles/styled-components/components/app.styled';
-import { Direction, Text } from 'styles/styled-components/global';
-
+import Drawer from 'components/Drawer';
+import Social from 'components/Utilities/Social';
+import { Wrapper, Button as ButtonApp, Header } from 'styles/styled-components/components/app.styled';
 import { ReactComponent as IconMessage } from 'styles/assets/icon-message.svg';
-import { ReactComponent as IconClose } from 'styles/assets/icon-close.svg';
+import { Direction, Text } from 'styles/styled-components/global';
 
 const App: NextPage = ({ children }) => {
   const dispatch = useDispatch();
@@ -19,27 +16,25 @@ const App: NextPage = ({ children }) => {
   return (
     <Wrapper.Container>
       <Wrapper.Main className={clsx({ 'active-drawer': drawer?.isVisible })}>
+        <Header.Wrapper>
+          <Direction.Row className="container justify-content-between align-items-center">
+            <Header.Content>
+              <Social />
+            </Header.Content>
+            <Header.Content className="justify-content-end">
+              <Direction.Row className="clickable" onClick={() => dispatch(toggleDrawer({ isVisible: true,  action: 'open' }))} >
+                <IconMessage className="icon icon-message mr-10" />
+                <Text.SubTitle>Get in Touch</Text.SubTitle>
+              </Direction.Row>
+            </Header.Content>
+          </Direction.Row>
+        </Header.Wrapper>
         {children}
       </Wrapper.Main>
-      <ButtonApp.Message type="button" onClick={() => dispatch(toggleDrawer({ isVisible: true }))} >
+      <ButtonApp.Message type="button" onClick={() => dispatch(toggleDrawer({ isVisible: true,  action: 'open' }))} >
         <IconMessage className="icon icon-message" />
       </ButtonApp.Message>
-      <Wrapper.Drawer className={clsx(`${clsx({ 'in-active': !drawer?.isVisible })}`, { active: drawer?.isVisible })}>
-        <div className="drawer-container">
-          <Direction.Row className="flex-end">
-            <ButtonApp.Close type="button" onClick={() => dispatch(toggleDrawer({ isVisible: false }))}>
-              <IconClose className="icon icon-close" />
-            </ButtonApp.Close>
-          </Direction.Row>
-          <Text.Title>Get in Touch</Text.Title>
-          <Input type="text" name="name" placeholder="Name" />
-          <Input type="text" name="email" placeholder="Email" />
-          <Input type="textArea" name="messsage" placeholder="Message" />
-          <Direction.Row className="flex-end">
-            <Button type="button">Submit</Button>
-          </Direction.Row>
-        </div>
-      </Wrapper.Drawer>
+      <Drawer />
     </Wrapper.Container>
   );
 };

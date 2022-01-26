@@ -40,6 +40,8 @@ const DrawerWrapper = styled.div`
   box-shadow: 0px 3px 6px #0707073B;
   display: flex;
   flex-direction: column;
+  transform: translateX(1);
+
   &.active {
     animation: ${AN.appearRight.In} 300ms ease-out forwards;
   }
@@ -47,24 +49,37 @@ const DrawerWrapper = styled.div`
     animation: ${AN.appearRight.Out} 300ms ease-out forwards;
   }
   .drawer-container {
-    padding: 90px;
+    padding: 50px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
+`;
+
+const SocialWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: flex-end;
 `;
 
 export const Wrapper = {
   Container: ContainerWrapper,
   Main: MainWrapper,
   Drawer: DrawerWrapper,
+  Social: SocialWrapper,
 };
 
 const MessageButton = styled.button`
   display: flex;
   position: fixed;
-  bottom: 51px;
-  right: 137px;
+  bottom: 50px;
+  right: 75px;
   background-color: ${colors.secondary};
-  width: 85px;
-  height: 85px;
+  width: 50px;
+  height: 50px;
   border-radius: 17px;
   border: none;
   cursor: pointer;
@@ -75,7 +90,7 @@ const MessageButton = styled.button`
   justify-content: center;
   align-items: center;
   .icon-message {
-    font-size: 43px;
+    font-size: 30px;
     color: ${colors.white};
   }
   &:hover {
@@ -108,4 +123,22 @@ const CloseButton = styled.button`
 export const Button = {
   Message: MessageButton,
   Close: CloseButton,
+};
+
+const HeaderWrapper = styled.header`
+  background-color: transparent;
+  color: rgb(14, 30, 43);
+  position: relative;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 70px;
+`;
+
+export const Header = {
+ Wrapper: HeaderWrapper,
+ Content: HeaderContent,
 };
