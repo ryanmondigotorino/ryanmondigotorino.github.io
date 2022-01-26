@@ -4,12 +4,14 @@ type Props = {
   type: 'text' | 'number' | 'textArea';
   name: string;
   placeholder?: string;
+  reference?: any;
   defaultValue?: string;
   styles?: React.CSSProperties;
 }
 
-const Input: React.FC<Props> = ({ type, name, defaultValue, placeholder, styles }) => {
+const Input: React.FC<Props> = ({ type, name, defaultValue, placeholder, reference, styles }) => {
   const inputProps = {
+    ref: reference,
     type,
     name,
     defaultValue,

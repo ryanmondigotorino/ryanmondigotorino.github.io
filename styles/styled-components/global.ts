@@ -4,9 +4,6 @@ import colors from 'styles/colors';
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  &.flex-end {
-    justify-content: flex-end;
-  }
 `;
 
 const Col = styled.div`
@@ -21,15 +18,50 @@ export const Direction = {
 
 const TextTitle = styled.h1`
   padding: 0;
-  font-size: 36px;
+  font-size: 24px;
   color: ${colors.white};
   font-family: 'Prompt';
   font-weight: 600;
   letter-spacing: 1.08px;
-  line-height: 43px;
-  margin: 0 0 57px 0;
+  &.hero {
+    font-size: 72px;
+    text-transform: uppercase;
+    letter-spacing: 2.4px;
+  }
+`;
+
+const TextSubTitle = styled.p`
+  height: 20px;
+  color: ${colors.gray[500]};
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 16px;
+  &.hero {
+    text-transform: uppercase;
+    letter-spacing: 12px;
+  }
+  &.light {
+    color: ${colors.white};
+    a {
+      color: ${colors.white};
+    }
+  }
+  &.dark {
+    color: ${colors.grayTeal[500]};
+  }
 `;
 
 export const Text = {
   Title: TextTitle,
+  SubTitle: TextSubTitle,
 };
+
+const ImageProfile = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 99999px;
+`;
+
+export const Image = {
+  Profile: ImageProfile,
+}
