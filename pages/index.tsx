@@ -2,9 +2,10 @@ import React from 'react';
 import type { GetServerSideProps } from 'next';
 import type { SEO } from 'interfaces';
 import NextSeo from 'components/Utilities/Next-seo';
-import { Wrapper, Section, Navigation } from 'styles/styled-components/pages/home.styled';
+import { Wrapper, Section, Navigation, Grid } from 'styles/styled-components/pages/home.styled';
 import { Direction, Text, Image } from 'styles/styled-components/global';
-import { redirect } from 'utils';
+import { Navigation as NavApp } from 'styles/styled-components/components/app.styled';
+import { redirect, workExperienceDataSets } from 'utils';
 
 type Props = { seo: SEO };
 const NAME = process.env.DEVELOPER_NAME;
@@ -46,9 +47,30 @@ const Home = ({ seo }: Props) => {
         </Direction.Row>
       </Section.Container>
       <Section.Container id="experience" className="container">
-        <Direction.Row className="w-100 h-100 justify-content-center">
-          <Text.Title className="heading">Work Experience</Text.Title>
-        </Direction.Row>
+        <Direction.Col className="h-100 align-items-center justify-content-between">
+          <Direction.Col className="align-items-center">
+            <Text.Title className="heading">Work Experience</Text.Title>
+            <Grid.Container>
+              {workExperienceDataSets.map((workExp) => (
+                <Grid.Card key={workExp.id}>
+                  <Grid.CardContent>
+                    <Text.Title className="mb-10">{workExp.jobTitle}</Text.Title>
+                    <Text.SubTitle className="label light mb-30">{workExp.company}</Text.SubTitle>
+                    <Text.SubTitle className="ground light">{workExp.dateAttended}</Text.SubTitle>
+                    <Grid.CardList>
+                      {workExp.doings.map((doings) => (
+                        <li key={doings.id}>{doings.description}</li>
+                      ))}
+                    </Grid.CardList>
+                  </Grid.CardContent>
+                </Grid.Card>
+              ))}
+            </Grid.Container>
+          </Direction.Col>
+          <Direction.Row className="navigation-experience">
+            <NavApp.Button type="button" className="active" />
+          </Direction.Row>
+        </Direction.Col>
       </Section.Container>
       <Section.Container id="skills">
         <Direction.Row className="w-100 h-100 justify-content-center">

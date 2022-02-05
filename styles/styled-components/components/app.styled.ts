@@ -35,7 +35,7 @@ const DrawerWrapper = styled.div`
   top: 0;
   right: 0;
   width: 41%;
-  background: transparent radial-gradient(closest-side at 91% 46%, #2D2D2D8C 0%, #1F1F1F 100%) 0% 0% no-repeat padding-box;
+  background: ${colors.primary} radial-gradient(closest-side at 91% 46%, #2D2D2D8C 0%, #1F1F1F 100%) 0% 0% no-repeat padding-box;
   height: 100%;
   box-shadow: 0px 3px 6px #0707073B;
   display: flex;
@@ -120,6 +120,11 @@ const NavigationWrapper = styled.div`
   display: flex;
   position: fixed;
   flex-direction: column;
+  button {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const NavigationButton = styled.button`
@@ -130,9 +135,6 @@ const NavigationButton = styled.button`
   border-radius: 99999px;
   cursor: pointer;
   transition: 300ms;
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
   &.active {
     background-color: ${colors.white};
   }
