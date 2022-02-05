@@ -58,6 +58,13 @@ const TextSubTitle = styled.p`
       animation: ${NavigationAnimation} 2.5s ease-in;
     }
   }
+  &.label {
+    font-size: 24px;
+  }
+  &.ground {
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+  }
   &.light {
     color: ${colors.white};
     a {
