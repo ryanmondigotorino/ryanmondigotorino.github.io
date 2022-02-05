@@ -9,13 +9,13 @@ const LINKEDIN_URL = process.env.LINKEDIN_URL;
 
 const Social: React.FC = () => (
   <Direction.Row>
-    <Link href={{ pathname: FACEBOOK_URL || '' }}>
-      <a target="_blank">
+    <Link passHref href={FACEBOOK_URL || ''}>
+      <a href="replace" target="_blank">
         <IconFacebook className="icon icon-socials" />
       </a>
     </Link>
-    <Link href={{ pathname: LINKEDIN_URL || '' }}>
-      <a target="_blank">
+    <Link passHref href={LINKEDIN_URL || ''}>
+      <a href="replace" target="_blank">
         <IconLinkedIn className="icon icon-socials" />
       </a>
     </Link>

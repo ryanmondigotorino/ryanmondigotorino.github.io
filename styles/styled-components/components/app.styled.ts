@@ -107,18 +107,45 @@ const CloseButton = styled.button`
   border: none;
   width: auto;
   height: auto;
-  outline: none;
-  outline-color: transparent;
   cursor: pointer;
   transition: 300ms;
-  &:focus {
-    outline: none;
-    outline-color: transparent;
-  }
   &:hover {
     opacity: 0.7;
   }
 `;
+
+const NavigationWrapper = styled.div`
+  top: 40%;
+  right: 50px;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+`;
+
+const NavigationButton = styled.button`
+  background-color: transparent;
+  border: 1px solid ${colors.white};
+  width: 15px;
+  height: 15px;
+  border-radius: 99999px;
+  cursor: pointer;
+  transition: 300ms;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  &.active {
+    background-color: ${colors.white};
+  }
+  &:hover {
+    opacity: 0.7;
+    background-color: ${colors.lightGray[100]}
+  }
+`;
+
+export const Navigation = {
+  Wrapper: NavigationWrapper,
+  Button: NavigationButton,
+};
 
 export const Button = {
   Message: MessageButton,

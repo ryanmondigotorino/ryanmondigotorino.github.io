@@ -66,3 +66,10 @@ export const onHide = keyframes`
     opacity: 0;
   }
 `;
+
+export const NavigationAnimation = keyframes`
+  0% { opacity: 0; padding-top: 300px; }
+  40% { opacity: 0; padding-top: 300px; }
+  99% { opacity: 0.3; padding-top: 0; }
+  100% { opacity: 1; padding-top: 0; }
+`;
