@@ -33,7 +33,7 @@ const Drawer: React.FC = () => {
     return () => {
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [drawer?.isVisible]);
+  }, [drawer?.isVisible, dispatch]);
 
   return (
     <Wrapper.Drawer
