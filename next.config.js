@@ -6,8 +6,6 @@ module.exports = {
   eslint: {
     dirs: ['pages', 'components', 'styles/styled-components/*'],
   },
-  basePath: '/out',
-  assetPrefix: '/out',
   env: {
     APP_URL: process.env.APP_URL,
     APP_NAME: process.env.APP_NAME,
