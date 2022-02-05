@@ -1,7 +1,6 @@
 import React from 'react';
-import type { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import type { SEO } from 'interfaces';
-import NextSeo from 'components/Utilities/Next-seo';
 import { Wrapper, Section, Navigation, Grid } from 'styles/styled-components/pages/home.styled';
 import { Direction, Text, Image } from 'styles/styled-components/global';
 import { Navigation as NavApp } from 'styles/styled-components/components/app.styled';
@@ -9,6 +8,9 @@ import { redirect, workExperienceDataSets } from 'utils';
 
 type Props = { seo: SEO };
 const NAME = process.env.DEVELOPER_NAME;
+const APP_NAME = process.env.APP_NAME;
+const APP_URL = process.env.APP_URL;
+
 let ITERATOR = 0;
 const TYPE_SPEED = 100;
 
@@ -30,7 +32,13 @@ const Home = ({ seo }: Props) => {
 
   return (
     <Wrapper>
-      <NextSeo seo={seo} />
+      <Head>
+        <title>{`${APP_NAME} | Home`}</title>
+        <meta name="description" content="Ryan M. Torino | Software Engineer 1 - Hello I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities" />
+        <meta name="og:image" content={`${APP_URL}/static/thors.jpeg`} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Section.Container id="hero" className="hero container">
         <Direction.Row className="w-100 h-100 justify-content-center align-items-center">
           <Direction.Col className="align-items-center w-800">
@@ -90,17 +98,6 @@ const Home = ({ seo }: Props) => {
     </Wrapper>
   );
 };
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const props: Props = {
-    seo: {
-      mainseo: { title: `${process.env.APP_NAME} | Home` },
-    },
-  };
-
-  return { props };
-};
-
 
 export default Home;
 
