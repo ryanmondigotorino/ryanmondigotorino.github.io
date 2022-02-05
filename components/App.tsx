@@ -1,6 +1,8 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import clsx from 'clsx';
+import smoothscroll from 'smoothscroll-polyfill';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store';
 import { toggleDrawer } from 'redux/appSlice';
@@ -37,9 +39,10 @@ const App: NextPage = ({ children }) => {
         observer.observe(targetElement);
       }
     });
-  }, [])
+  }, []);
 
   React.useEffect(() => {
+    smoothscroll.polyfill();
     sectionObserver();
   }, [sectionObserver]); 
 
