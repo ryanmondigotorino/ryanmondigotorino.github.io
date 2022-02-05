@@ -6,6 +6,12 @@ module.exports = {
   eslint: {
     dirs: ['pages', 'components', 'styles/styled-components/*'],
   },
+  env: {
+    APP_URL: process.env.APP_URL,
+    FACEBOOK_URL: process.env.FACEBOOK_URL,
+    LINKEDIN_URL: process.env.LINKEDIN_URL,
+    DEVELOPER_NAME: process.env.DEVELOPER_NAME,
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
