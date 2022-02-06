@@ -68,8 +68,6 @@ const GridContainer = styled.ul`
       }
       &::after {
         border-radius: 20px;
-        background: ${colors.secondary};
-        box-shadow: 0px 6px 9px #0000004b;
         content: '';
         height: 100%;
         left: 0;

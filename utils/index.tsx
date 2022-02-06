@@ -139,8 +139,8 @@ export const workExperienceDataSets = [
   {
     id: 1,
     jobTitle: 'Web Developer Intern',
-    company: 'August 99 Inc | TDP',
-    dateAttended: 'September 06, 2018 - March 28, 2019',
+    company: 'August 99 Inc | (TDP - Dojo)',
+    dateAttended: 'September 06, 2018 - March 28, 2019 (1040H)',
     doings: [
       {
         id: 0,
