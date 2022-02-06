@@ -44,6 +44,7 @@ const App: NextPage = ({ children }) => {
   React.useEffect(() => {
     smoothscroll.polyfill();
     sectionObserver();
+    window.scrollTo(0, 0);
   }, [sectionObserver]); 
 
   return (

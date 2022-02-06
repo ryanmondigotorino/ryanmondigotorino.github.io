@@ -1,0 +1,28 @@
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: middle;
+  width: 1em;
+  &-socials {
+    color: #fff;
+    font-size: 17px;
+    margin-right: 20px;
+  }
+  &-skills {
+    transition: 300ms;
+    color: #4D4D4D;
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+  &-vue {
+    path {
+      transition: 300ms;
+      &:last-child {
+        fill: #656565
+      }
+    }
+  }
+}

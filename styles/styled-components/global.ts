@@ -34,6 +34,12 @@ const TextTitle = styled.h1`
     text-transform: uppercase;
     letter-spacing: 2.4px;
   }
+  &.skill-title {
+    font-size: 16px;
+    letter-spacing: 0;
+    color: ${colors.iconBaseColor};
+    transition: 300ms;
+  }
 `;
 
 const TextSubTitle = styled.p`
@@ -46,16 +52,16 @@ const TextSubTitle = styled.p`
     text-transform: uppercase;
     letter-spacing: 1.2px;
     &:nth-child(1) {
-      animation: ${NavigationAnimation} 2.2s ease-in;
+      animation: ${NavigationAnimation} 1.7s ease-in;
     }
     &:nth-child(2) {
-      animation: ${NavigationAnimation} 2.3s ease-in;
+      animation: ${NavigationAnimation} 1.8s ease-in;
     }
     &:nth-child(3) {
-      animation: ${NavigationAnimation} 2.4s ease-in;
+      animation: ${NavigationAnimation} 1.9s ease-in;
     }
     &:nth-child(4) {
-      animation: ${NavigationAnimation} 2.5s ease-in;
+      animation: ${NavigationAnimation} 2.0s ease-in;
     }
   }
   &.label {

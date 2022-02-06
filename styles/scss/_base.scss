@@ -2,7 +2,7 @@ html,
 body,
 div#__next,
 main {
-  height: 100vh
+  height: calc(100vh - 90px);
 }
 
 body {
@@ -12,16 +12,6 @@ body {
   width: 100%;
   margin: 0;
   background-color: #1F1F1F;
-}
-
-.icon {
-  display: inline-block;
-  fill: currentColor;
-  height: 1em;
-  stroke: currentColor;
-  stroke-width: 0;
-  vertical-align: middle;
-  width: 1em;
 }
 
 a {
@@ -152,12 +142,6 @@ p {
   &-end {
     align-items: flex-end;
   }
-}
-
-.icon-socials {
-  color: #fff;
-  font-size: 17px;
-  margin-right: 20px;
 }
 
 .text-center {

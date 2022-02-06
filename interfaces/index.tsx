@@ -5,3 +5,12 @@ export type SEO = {
     description?: string;
   };
 };
+
+export type SkillsDataProps = {
+  id: number;
+  label: string;
+  percentage: string;
+  icon: React.ReactElement;
+  order: number;
+  url: string;
+};
