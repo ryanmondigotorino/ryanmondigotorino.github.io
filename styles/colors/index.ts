@@ -1,9 +1,22 @@
 const colors = {
   primary: '#1F1F1F',
   secondary: '#292929',
+  sectionBg: '#242424',
+  aboutBg: '#262626',
+  barBg: '#727272',
   white: '#ffffff',
   inputBg: '#404040',
   inputPlaceholder: '#898989',
+  iconBaseColor: '#4D4D4D',
+
+  iconGraphQl: '#E10098',
+  iconLaravel: '#EF533F',
+  iconReact: '#00D8FF',
+  iconPrisma: '#0C344B',
+  iconNodeJs: '#8CC84B',
+  iconVueLast: '#35495E',
+  iconVueFirst: '#42B883',
+
   lightGray: {
     50: '#f2f2f2',
     100: '#f2f2f2',

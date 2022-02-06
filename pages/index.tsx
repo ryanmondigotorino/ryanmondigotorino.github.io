@@ -1,12 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
-import type { SEO } from 'interfaces';
-import { Wrapper, Section, Navigation, Grid } from 'styles/styled-components/pages/home.styled';
+import { format } from 'date-fns';
+import type { SkillsDataProps } from 'interfaces';
+import Link from 'next/link';
+import { Wrapper, Section, Navigation, Grid, Bar } from 'styles/styled-components/pages/home.styled';
 import { Direction, Text, Image } from 'styles/styled-components/global';
-import { Navigation as NavApp } from 'styles/styled-components/components/app.styled';
-import { redirect, workExperienceDataSets } from 'utils';
+import { Navigation as NavApp, Footer } from 'styles/styled-components/components/app.styled';
+import { redirect, workExperienceDataSets, skillsDataSets, arrayPagination } from 'utils';
+import clsx from 'clsx';
 
-type Props = { seo: SEO };
 const NAME = process.env.DEVELOPER_NAME;
 const APP_NAME = process.env.APP_NAME;
 const APP_URL = process.env.APP_URL;
@@ -14,7 +16,14 @@ const APP_URL = process.env.APP_URL;
 let ITERATOR = 0;
 const TYPE_SPEED = 100;
 
-const Home = ({ seo }: Props) => {
+const modifiedSkillsDataSet: Array<Array<SkillsDataProps>> = arrayPagination(
+    skillsDataSets
+    .sort((a, b) => Number(a.order) - Number(b.order))
+    .slice()
+    .splice(0, skillsDataSets.length)
+  , 2);
+
+const Home = () => {
   const typeWriter = React.useCallback(() => {
     const textSubtitle = document.getElementById('hero-text') as HTMLHeadElement;
     if (NAME && textSubtitle.innerHTML.length < NAME.length) {
@@ -60,14 +69,14 @@ const Home = ({ seo }: Props) => {
             <Text.Title className="heading">Work Experience</Text.Title>
             <Grid.Container>
               {workExperienceDataSets.map((workExp) => (
-                <Grid.Card key={workExp.id}>
-                  <Grid.CardContent>
+                <Grid.Card key={workExp.id} className="work-exp">
+                  <Grid.CardContent className="work-exp">
                     <Text.Title className="mb-10">{workExp.jobTitle}</Text.Title>
                     <Text.SubTitle className="label light mb-30">{workExp.company}</Text.SubTitle>
                     <Text.SubTitle className="ground light">{workExp.dateAttended}</Text.SubTitle>
                     <Grid.CardList>
                       {workExp.doings.map((doings) => (
-                        <li key={doings.id}>{doings.description}</li>
+                        <li key={doings.id} className="work-exp">{doings.description}</li>
                       ))}
                     </Grid.CardList>
                   </Grid.CardContent>
@@ -80,21 +89,62 @@ const Home = ({ seo }: Props) => {
           </Direction.Row>
         </Direction.Col>
       </Section.Container>
-      <Section.Container id="skills">
-        <Direction.Row className="w-100 h-100 justify-content-center">
+      <Section.Container id="skills" className="skills">
+        <Direction.Col className="container h-100">
           <Text.Title className="heading">Skills</Text.Title>
-        </Direction.Row>
+          <Grid.Container className="h-100">
+            <Grid.Card>
+              <Grid.CardContent>
+                <Grid.CardList className="default h-100">
+                  {skillsDataSets.sort((a, b) => Number(a.id) - Number(b.id)).map((val) => (
+                    <li key={val.id}>
+                      <Text.SubTitle className="light">{val.label}</Text.SubTitle>
+                      <Bar width={val.percentage}>
+                        <div className="fill" />
+                      </Bar>
+                    </li>
+                  ))}
+                </Grid.CardList>
+              </Grid.CardContent>
+            </Grid.Card>
+            <Grid.Card>
+              <Grid.CardContent className="skills-icons">
+                {modifiedSkillsDataSet?.map((baseDataSet, key) => (
+                  <Direction.Col key={key} className={clsx({ 'justify-content-end': key === 1 })}>
+                    {baseDataSet?.map((value) => (
+                      <Link key={value.id} passHref href={value.url}>
+                        <a href="replace" target="_blank">
+                          <Grid.CardIcon>
+                            {value.icon}
+                            <Text.Title className="skill-title">{value.label}</Text.Title>
+                          </Grid.CardIcon>
+                        </a>
+                      </Link>
+                    ))}
+                  </Direction.Col>
+                ))}
+              </Grid.CardContent>
+            </Grid.Card>
+          </Grid.Container>
+        </Direction.Col>
       </Section.Container>
       <Section.Container id="projects">
         <Direction.Row className="w-100 h-100 justify-content-center">
           <Text.Title className="heading">Projects</Text.Title>
         </Direction.Row>
       </Section.Container>
-      <Section.Container id="about">
+      <Section.Container id="about" className="about">
         <Direction.Row className="w-100 h-100 justify-content-center">
           <Text.Title className="heading">About</Text.Title>
         </Direction.Row>
       </Section.Container>
+      <Footer.Wrapper>
+        <Footer.Body>
+          <Text.SubTitle className="light">
+            Copyright &copy; Ryan M. Torino {format(new Date(), 'yyyy')}
+          </Text.SubTitle>
+        </Footer.Body>
+        </Footer.Wrapper>
     </Wrapper>
   );
 };

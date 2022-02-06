@@ -171,3 +171,22 @@ export const Header = {
  Wrapper: HeaderWrapper,
  Content: HeaderContent,
 };
+
+const FooterWrapper = styled.footer`
+  background-color: ${colors.primary};
+  color: rgb(14, 30, 43);
+  position: relative;
+`;
+
+const FooterBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Footer = {
+  Wrapper: FooterWrapper,
+  Body: FooterBody,
+};
