@@ -7,7 +7,7 @@ export const Wrapper = styled.main`
 
 const SectionContainer = styled.section`
   width: 100%;
-  height: 600px;
+  height: 650px;
   padding: 70px 0;
   &.hero {
     padding: 0;
