@@ -142,6 +142,10 @@ const NavigationButton = styled.button`
     opacity: 0.7;
     background-color: ${colors.lightGray[100]}
   }
+  &:active {
+    background-color: ${colors.white};
+    opacity: 1;
+  }
 `;
 
 export const Navigation = {

@@ -1,4 +1,4 @@
-import { SkillsDataProps } from 'interfaces';
+import { SkillsDataProps, ProjectDataProps } from 'interfaces';
 import { ReactComponent as IconGraphQL } from 'styles/assets/skills/icon-graphql.svg';
 import { ReactComponent as IconLaravel } from 'styles/assets/skills/icon-laravel.svg';
 import { ReactComponent as IconReact } from 'styles/assets/skills/icon-react.svg';
@@ -11,8 +11,8 @@ export const redirect = (id: string) => {
   layoutElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
 };
 
-export const arrayPagination = (arr: Array<SkillsDataProps>, size: number) => {
-  const paginated: Array<Array<SkillsDataProps>> = arr.reduce((acc: any, val, i) => {
+export const arrayPagination = (arr: Array<any>, size: number) => {
+  const paginated: Array<Array<any>> = arr.reduce((acc: any, val, i) => {
     const idx = Math.floor(i / size) as any;
     const page: any[] = acc[idx] || (acc[idx] = []);
     page.push(val);
@@ -71,6 +71,39 @@ export const skillsDataSets: Array<SkillsDataProps> = [
     icon: <IconVue className="icon icon-skills icon-vue" />,
     order: 6,
     url: 'https://vuejs.org',
+  },
+];
+
+export const projectDataSets: Array<ProjectDataProps> = [
+  {
+    id: 0,
+    url: 'https://iorthotics.com',
+    image: '/static/projects/iorthotics.jpg',
+  },
+  {
+    id: 1,
+    url: 'https://real.ph',
+    image: '/static/projects/real.jpg',
+  },
+  {
+    id: 2,
+    url: 'https://coworkerhq.com',
+    image: '/static/projects/coworkerhq.jpg',
+  },
+  {
+    id: 3,
+    url: 'https://qtimesoftware.com',
+    image: '/static/projects/qtime.jpg',
+  },
+  {
+    id: 4,
+    url: 'https://eats.ph',
+    image: '/static/projects/eats.jpg',
+  },
+  {
+    id: 5,
+    url: 'https://access.com',
+    image: '/static/projects/access.jpg',
   },
 ];
 

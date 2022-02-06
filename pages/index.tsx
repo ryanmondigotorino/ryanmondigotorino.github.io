@@ -1,13 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
 import { format } from 'date-fns';
-import type { SkillsDataProps } from 'interfaces';
+import clsx from 'clsx';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import type { SkillsDataProps, ProjectDataProps } from 'interfaces';
 import Link from 'next/link';
-import { Wrapper, Section, Navigation, Grid, Bar } from 'styles/styled-components/pages/home.styled';
+import { Wrapper, Section, Navigation, Grid, Bar, Project } from 'styles/styled-components/pages/home.styled';
 import { Direction, Text, Image } from 'styles/styled-components/global';
 import { Navigation as NavApp, Footer } from 'styles/styled-components/components/app.styled';
-import { redirect, workExperienceDataSets, skillsDataSets, arrayPagination } from 'utils';
-import clsx from 'clsx';
+import { redirect, workExperienceDataSets, skillsDataSets, arrayPagination, projectDataSets } from 'utils';
 
 const NAME = process.env.DEVELOPER_NAME;
 const APP_NAME = process.env.APP_NAME;
@@ -23,7 +25,15 @@ const modifiedSkillsDataSet: Array<Array<SkillsDataProps>> = arrayPagination(
     .splice(0, skillsDataSets.length)
   , 2);
 
+const modifiedProjectDataSet: Array<Array<ProjectDataProps>> = arrayPagination(
+  projectDataSets
+  .sort((a, b) => Number(b.id) - Number(a.id))
+  .slice()
+  .splice(0, projectDataSets.length)
+  , 3);
+
 const Home = () => {
+  const [activeProject, setActiveProject] = React.useState<number>(0);
   const typeWriter = React.useCallback(() => {
     const textSubtitle = document.getElementById('hero-text') as HTMLHeadElement;
     if (NAME && textSubtitle.innerHTML.length < NAME.length) {
@@ -43,7 +53,7 @@ const Home = () => {
     <Wrapper>
       <Head>
         <title>{`${APP_NAME} | Home`}</title>
-        <meta name="description" content="Ryan M. Torino | Software Engineer 1 - Hello I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities" />
+        <meta name="description" content="Ryan M. Torino | Software Engineer 1 - Hello, I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities." />
         <meta name="og:image" content={`${APP_URL}/static/thors.jpeg`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -63,7 +73,7 @@ const Home = () => {
           </Direction.Col>
         </Direction.Row>
       </Section.Container>
-      <Section.Container id="experience" className="container">
+      <Section.Container id="experience" className="container w-navigation">
         <Direction.Col className="h-100 align-items-center justify-content-between">
           <Direction.Col className="align-items-center">
             <Text.Title className="heading">Work Experience</Text.Title>
@@ -84,7 +94,7 @@ const Home = () => {
               ))}
             </Grid.Container>
           </Direction.Col>
-          <Direction.Row className="navigation-experience">
+          <Direction.Row>
             <NavApp.Button type="button" className="active" />
           </Direction.Row>
         </Direction.Col>
@@ -128,10 +138,48 @@ const Home = () => {
           </Grid.Container>
         </Direction.Col>
       </Section.Container>
-      <Section.Container id="projects">
-        <Direction.Row className="w-100 h-100 justify-content-center">
-          <Text.Title className="heading">Projects</Text.Title>
-        </Direction.Row>
+      <Section.Container id="projects" className="container w-navigation">
+        <Direction.Col className="h-100 align-items-center justify-content-between">
+          <Direction.Col className="h-100 align-items-center">
+            <Text.Title className="heading">Projects</Text.Title>
+            <Carousel
+              emulateTouch
+              infiniteLoop
+              interval={1000 * 60 * 60}
+              transitionTime={200}
+              showThumbs={false}
+              showIndicators={false}
+              showStatus={false}
+              showArrows={false}
+              selectedItem={activeProject}
+              onChange={(index) => setActiveProject(index)}
+            >
+              {modifiedProjectDataSet.map((projectData, key) => (
+                <Grid.Container key={key} className="h-100 projects">
+                  {projectData.map((data) => (
+                    <Link key={data.id} passHref href={data.url}>
+                      <a href="replace" target="_blank">
+                        <Grid.Card>
+                          <Project.Image src={data.image} alt="projects"/>
+                        </Grid.Card>
+                      </a>
+                    </Link>
+                  ))}
+                </Grid.Container>
+              ))}
+            </Carousel>
+          </Direction.Col>
+          <Direction.Row>
+            {modifiedProjectDataSet.map((_, key) => (
+              <NavApp.Button
+                key={key}
+                type="button"
+                className={clsx('projects', { active: activeProject === key })}
+                onClick={() => setActiveProject(key)}
+              />
+            ))}
+          </Direction.Row>
+        </Direction.Col>
       </Section.Container>
       <Section.Container id="about" className="about">
         <Direction.Row className="w-100 h-100 justify-content-center">
@@ -140,7 +188,7 @@ const Home = () => {
       </Section.Container>
       <Footer.Wrapper>
         <Footer.Body>
-          <Text.SubTitle className="light">
+          <Text.SubTitle className="light ground">
             Copyright &copy; Ryan M. Torino {format(new Date(), 'yyyy')}
           </Text.SubTitle>
         </Footer.Body>

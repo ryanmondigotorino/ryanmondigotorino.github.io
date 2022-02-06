@@ -7,11 +7,11 @@ export const Wrapper = styled.main`
 
 const SectionContainer = styled.section`
   width: 100%;
-  height: calc(100vh - 140px);
+  height: 600px;
   padding: 70px 0;
   &.hero {
     padding: 0;
-    height: calc(100vh - 70px);
+    height: 100vh;
   }
   &.skills {
     background: linear-gradient(to right, ${colors.sectionBg} 50%, ${colors.primary} 50%);
@@ -19,7 +19,7 @@ const SectionContainer = styled.section`
   &.about {
     background: ${colors.aboutBg};
   }
-  &.navigation-experience {
+  &.w-navigation {
     button {
       &:not(:last-child) {
         margin-right: 20px;
@@ -53,6 +53,36 @@ const GridContainer = styled.ul`
   height: auto;
   padding: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  &.projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    a {
+      transition: transform 300ms ease-out 300ms;
+      &:hover {
+        opacity: 1;
+        transform: translate(0, -5px);
+        z-index: 1;
+        cursor: pointer;
+        &::after {
+          opacity: 1;
+        }
+      }
+      &::after {
+        border-radius: 20px;
+        background: ${colors.secondary};
+        box-shadow: 0px 6px 9px #0000004b;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        transition: opacity 300ms ease-out 300ms;
+        width: 100%;
+        z-index: -1;
+      }
+    }
+  }
 `;
 
 const GridCard = styled.div`
@@ -206,3 +236,13 @@ export const Bar = styled.div<BarProps>`
     height: inherit;
   }
 `;
+
+const ProjectImage = styled.img`
+  width: 100%;
+  height: calc(100% - 50px);
+  border-radius: 20px;
+`;
+
+export const Project = {
+  Image: ProjectImage,
+};

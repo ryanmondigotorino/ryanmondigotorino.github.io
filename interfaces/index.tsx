@@ -14,3 +14,9 @@ export type SkillsDataProps = {
   order: number;
   url: string;
 };
+
+export type ProjectDataProps = {
+  id: number;
+  url: string;
+  image: string;
+}
