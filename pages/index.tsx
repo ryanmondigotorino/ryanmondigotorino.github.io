@@ -109,14 +109,17 @@ const Home: NextPage = () => {
                     working full-time software engineer at August 99 Inc under
                     the Oqulo division. I&apos;ve been working with them for
                     almost 4 years, that includes my internship last September
-                    2018 up until March 2019. I was hired full-time employee
-                    last August 2019. Quick personality about myself. I consider
-                    myself an extroverted person. I like going out with my
-                    peers, friends, or colleagues. I play musical instruments in
-                    my past time and practice my skills in web development by
-                    making personal projects. If you were interested to get in
-                    touch with me, feel free to navigate the contact form on
-                    this website or email me at{" "}
+                    2018 up until March 2019, and I was hired full-time employee
+                    last August 2019.
+                  </Text.SubTitle>
+                  <Text.SubTitle className="light about-description h-max-content">
+                    Quick personality about myself. I consider myself an
+                    extroverted person. I like going out with my peers, friends,
+                    or colleagues. I play musical instruments in my past time
+                    and practice my skills in web development by making personal
+                    projects. If you were interested to get in touch with me,
+                    feel free to navigate the contact form on this website or
+                    email me at{" "}
                     <Link passHref href="mailto:ryanmondigotorino@gmail.com">
                       <a href="replace" className="text-underline">
                         ryanmondigotorino@gmail.com
