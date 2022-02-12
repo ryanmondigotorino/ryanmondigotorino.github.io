@@ -82,7 +82,7 @@ const TextSubTitle = styled.p`
   }
   &.about-description {
     line-height: 30px;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.5px;
     height: max-content;
     text-align: justify;
   }
