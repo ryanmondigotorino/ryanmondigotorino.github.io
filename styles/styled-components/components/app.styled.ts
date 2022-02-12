@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import colors from 'styles/colors';
-import * as AN from '../animations';
+import styled from "styled-components";
+import colors from "styles/colors";
+import * as AN from "../animations";
 
 const ContainerWrapper = styled.div`
   height: 100%;
@@ -35,9 +35,11 @@ const DrawerWrapper = styled.div`
   top: 0;
   right: 0;
   width: 41%;
-  background: ${colors.primary} radial-gradient(closest-side at 91% 46%, #2D2D2D8C 0%, #1F1F1F 100%) 0% 0% no-repeat padding-box;
+  background: ${colors.primary}
+    radial-gradient(closest-side at 91% 46%, #2d2d2d8c 0%, #1f1f1f 100%) 0% 0%
+    no-repeat padding-box;
   height: 100%;
-  box-shadow: 0px 3px 6px #0707073B;
+  box-shadow: 0px 3px 6px #0707073b;
   display: flex;
   flex-direction: column;
   transform: translateX(1);
@@ -85,7 +87,7 @@ const MessageButton = styled.button`
   cursor: pointer;
   outline: none;
   outline-color: transparent;
-  box-shadow: 0px 3px 6px #0707073B;
+  box-shadow: 0px 3px 6px #0707073b;
   transition: 300ms;
   justify-content: center;
   align-items: center;
@@ -140,7 +142,7 @@ const NavigationButton = styled.button`
   }
   &:hover {
     opacity: 0.7;
-    background-color: ${colors.lightGray[100]}
+    background-color: ${colors.lightGray[100]};
   }
   &:active {
     background-color: ${colors.white};
@@ -172,8 +174,8 @@ const HeaderContent = styled.div`
 `;
 
 export const Header = {
- Wrapper: HeaderWrapper,
- Content: HeaderContent,
+  Wrapper: HeaderWrapper,
+  Content: HeaderContent,
 };
 
 const FooterWrapper = styled.footer`

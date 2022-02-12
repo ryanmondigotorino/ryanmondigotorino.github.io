@@ -1,4 +1,5 @@
 import { keyframes } from "styled-components";
+
 export const appearInFromLeft = keyframes`
   from {
     transform: translateX(-100%);
@@ -34,9 +35,8 @@ const outToRight = keyframes`
 
 export const appearRight = {
   In: inFromRight,
-  Out: outToRight
+  Out: outToRight,
 };
-
 
 export const appearInFromTop = keyframes`
   from {

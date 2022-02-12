@@ -1,24 +1,33 @@
-import React from 'react';
-import Head from 'next/head';
-import type { NextPage } from 'next';
-import Projects from 'components/Sections/Projects';
-import Skills from 'components/Sections/Skills';
-import Footer from 'components/Sections/Footer';
-import { Wrapper, Section, Navigation, Grid, Bar } from 'styles/styled-components/pages/home.styled';
-import { Direction, Text, Image } from 'styles/styled-components/global';
-import { Navigation as NavApp } from 'styles/styled-components/components/app.styled';
-import { redirect, workExperienceDataSets } from 'utils';
+/* eslint-disable no-plusplus */
+import React from "react";
+import Head from "next/head";
+import type { NextPage } from "next";
+import Projects from "components/Sections/Projects";
+import Skills from "components/Sections/Skills";
+import Footer from "components/Sections/Footer";
+import WorkExperience from "components/Sections/WorkExperience";
+import {
+  Wrapper,
+  Section,
+  Navigation,
+  Grid,
+} from "styles/styled-components/pages/home.styled";
+import { Direction, Text, Image } from "styles/styled-components/global";
+import { redirect } from "utils";
+import Link from "next/link";
 
 const NAME = process.env.DEVELOPER_NAME;
-const APP_NAME = process.env.APP_NAME;
-const APP_URL = process.env.APP_URL;
+const { APP_NAME } = process.env;
+const { APP_URL } = process.env;
 
 let ITERATOR = 0;
 const TYPE_SPEED = 100;
 
 const Home: NextPage = () => {
   const typeWriter = React.useCallback(() => {
-    const textSubtitle = document.getElementById('hero-text') as HTMLHeadElement;
+    const textSubtitle = document.getElementById(
+      "hero-text"
+    ) as HTMLHeadElement;
     if (NAME && textSubtitle.innerHTML.length < NAME.length) {
       if (ITERATOR < NAME.length) {
         textSubtitle.innerHTML += NAME.charAt(ITERATOR);
@@ -29,14 +38,17 @@ const Home: NextPage = () => {
   }, []);
 
   React.useEffect(() => {
-    typeWriter()
+    typeWriter();
   }, [typeWriter]);
 
   return (
     <Wrapper>
       <Head>
         <title>{`${APP_NAME} | Home`}</title>
-        <meta name="description" content="Ryan M. Torino | Software Engineer 1 - Hello, I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities." />
+        <meta
+          name="description"
+          content="Ryan M. Torino | Software Engineer 1 - Hello, I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities."
+        />
         <meta name="og:image" content={`${APP_URL}/static/thors.jpeg`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -46,48 +58,77 @@ const Home: NextPage = () => {
           <Direction.Col className="align-items-center w-800">
             <Image.Profile src="/static/thors.jpeg" className="mb-50" />
             <Text.SubTitle className="hero">Software Engineer</Text.SubTitle>
-            <Text.Title id="hero-text" className="hero"></Text.Title>
+            <Text.Title id="hero-text" className="hero" />
             <Navigation.Skills className="w-100">
-              <Text.SubTitle className="clickable hero" onClick={() => redirect('experience')}>Experience</Text.SubTitle>
-              <Text.SubTitle className="clickable hero" onClick={() => redirect('skills')}>Skills</Text.SubTitle>
-              <Text.SubTitle className="clickable hero" onClick={() => redirect('projects')}>Projects</Text.SubTitle>
-              <Text.SubTitle className="clickable hero" onClick={() => redirect('about')}>About</Text.SubTitle>
+              <Text.SubTitle
+                className="clickable hero"
+                onClick={() => redirect("experience")}
+              >
+                Experience
+              </Text.SubTitle>
+              <Text.SubTitle
+                className="clickable hero"
+                onClick={() => redirect("skills")}
+              >
+                Skills
+              </Text.SubTitle>
+              <Text.SubTitle
+                className="clickable hero"
+                onClick={() => redirect("projects")}
+              >
+                Projects
+              </Text.SubTitle>
+              <Text.SubTitle
+                className="clickable hero"
+                onClick={() => redirect("about")}
+              >
+                About
+              </Text.SubTitle>
             </Navigation.Skills>
           </Direction.Col>
         </Direction.Row>
       </Section.Container>
-      <Section.Container id="experience" className="container w-navigation">
-        <Direction.Col className="h-100 align-items-center justify-content-between">
-          <Direction.Col className="align-items-center">
-            <Text.Title className="heading">Work Experience</Text.Title>
-            <Grid.Container>
-              {workExperienceDataSets.map((workExp) => (
-                <Grid.Card key={workExp.id} className="work-exp">
-                  <Grid.CardContent className="work-exp">
-                    <Text.Title className="mb-10">{workExp.jobTitle}</Text.Title>
-                    <Text.SubTitle className="label light mb-30">{workExp.company}</Text.SubTitle>
-                    <Text.SubTitle className="ground light">{workExp.dateAttended}</Text.SubTitle>
-                    <Grid.CardList>
-                      {workExp.doings.map((doings) => (
-                        <li key={doings.id} className="work-exp">{doings.description}</li>
-                      ))}
-                    </Grid.CardList>
-                  </Grid.CardContent>
-                </Grid.Card>
-              ))}
-            </Grid.Container>
-          </Direction.Col>
-          <Direction.Row>
-            <NavApp.Button type="button" className="active" />
-          </Direction.Row>
-        </Direction.Col>
-      </Section.Container>
+      <WorkExperience />
       <Skills />
       <Projects />
       <Section.Container id="about" className="about">
-        <Direction.Row className="w-100 h-100 justify-content-center">
-          <Text.Title className="heading">About</Text.Title>
-        </Direction.Row>
+        <Direction.Col className="container h-100">
+          <Direction.Col className="h-100">
+            <Grid.Container className="h-100 m-0">
+              <Grid.Card>
+                <Grid.CardContent className="about justify-content-center align-items-center">
+                  <Image.About src="/static/thors-speaker.jpg" alt="my-photo" />
+                </Grid.CardContent>
+              </Grid.Card>
+              <Grid.Card>
+                <Grid.CardContent className="about justify-content-center">
+                  <Text.Title className="heading mb-30">About</Text.Title>
+                  <Text.SubTitle className="light about-description h-max-content">
+                    Hello! I&apos;m Ryan M. Torino. I graduated from FEU
+                    Institute of Technology, last August 2019. I&apos;m now
+                    working full-time software engineer at August 99 Inc under
+                    the Oqulo division. I&apos;ve been working with them for
+                    almost 4 years, that includes my internship last September
+                    2018 up until March 2019. I was hired full-time employee
+                    last August 2019. Quick personality about myself. I consider
+                    myself an extroverted person. I like going out with my
+                    peers, friends, or colleagues. I play musical instruments in
+                    my past time and practice my skills in web development by
+                    making personal projects. If you were interested to get in
+                    touch with me, feel free to navigate the contact form on
+                    this website or email me at{" "}
+                    <Link passHref href="mailto:ryanmondigotorino@gmail.com">
+                      <a href="replace" className="text-underline">
+                        ryanmondigotorino@gmail.com
+                      </a>
+                    </Link>
+                    . Hope we can get along and have a good day 😊
+                  </Text.SubTitle>
+                </Grid.CardContent>
+              </Grid.Card>
+            </Grid.Container>
+          </Direction.Col>
+        </Direction.Col>
       </Section.Container>
       <Footer />
     </Wrapper>
@@ -95,4 +136,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-

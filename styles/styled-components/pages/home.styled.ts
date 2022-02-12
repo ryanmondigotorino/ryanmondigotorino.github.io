@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import colors from 'styles/colors';
+import styled from "styled-components";
+import colors from "styles/colors";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -14,7 +14,11 @@ const SectionContainer = styled.section`
     height: 100vh;
   }
   &.skills {
-    background: linear-gradient(to right, ${colors.sectionBg} 50%, ${colors.primary} 50%);
+    background: linear-gradient(
+      to right,
+      ${colors.sectionBg} 50%,
+      ${colors.primary} 50%
+    );
   }
   &.about {
     background: ${colors.aboutBg};
@@ -42,7 +46,7 @@ const NavigationSkills = styled.div`
 
 export const Navigation = {
   Skills: NavigationSkills,
-}
+};
 
 const GridContainer = styled.ul`
   display: grid;
@@ -68,7 +72,7 @@ const GridContainer = styled.ul`
       }
       &::after {
         border-radius: 20px;
-        content: '';
+        content: "";
         height: 100%;
         left: 0;
         opacity: 0;
@@ -103,7 +107,7 @@ const GridCard = styled.div`
       border-radius: 0.9375em;
       background: ${colors.secondary};
       box-shadow: 0px 6px 9px #0000004b;
-      content: '';
+      content: "";
       height: 100%;
       left: 0;
       opacity: 0;
@@ -124,6 +128,8 @@ const GridCardContent = styled.div`
   padding: 0 55px 0 0;
   &.work-exp {
     padding: 50px 55px;
+    text-align: start;
+    justify-content: start;
   }
   &.skills-icons {
     padding: 0;
@@ -137,6 +143,9 @@ const GridCardContent = styled.div`
         opacity: 1;
       }
     }
+  }
+  &.about {
+    padding: 0;
   }
 `;
 
@@ -154,12 +163,12 @@ const GridCardList = styled.ul`
     font-size: 17px;
     color: ${colors.white};
     letter-spacing: 0.83px;
-    font-family: 'Karla';
+    font-family: "Karla";
     &.work-exp::before {
-      content: '•';
+      content: "•";
       color: ${colors.white};
       font-weight: bold;
-      display: inline-block; 
+      display: inline-block;
       width: 1em;
       margin-left: -1em;
       font-size: 35px;
@@ -214,7 +223,7 @@ export const Grid = {
   CardContent: GridCardContent,
   CardList: GridCardList,
   CardIcon: GridCardIcon,
-}
+};
 
 type BarProps = { width: string };
 
@@ -234,13 +243,3 @@ export const Bar = styled.div<BarProps>`
     height: inherit;
   }
 `;
-
-const ProjectImage = styled.img`
-  width: 100%;
-  height: calc(100% - 50px);
-  border-radius: 20px;
-`;
-
-export const Project = {
-  Image: ProjectImage,
-};

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import colors from 'styles/colors';
+import styled from "styled-components";
+import colors from "styles/colors";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -64,4 +64,4 @@ const TextArea = styled.textarea`
 export const Field = {
   Input,
   TextArea,
-}
+};

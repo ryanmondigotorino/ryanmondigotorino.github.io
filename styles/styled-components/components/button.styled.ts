@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import colors from 'styles/colors';
+import styled from "styled-components";
+import colors from "styles/colors";
 
-export const ButtonWrapper = styled.button`
+export default styled.button`
   display: flex;
   justify-content: center;
   width: auto;

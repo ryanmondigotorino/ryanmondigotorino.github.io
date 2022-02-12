@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import React from 'react';
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Drawer = {
   isVisible: boolean;
@@ -13,12 +13,12 @@ export type InitialState = {
 const initialState: InitialState = {
   drawer: {
     isVisible: false,
-    action: '',
+    action: "",
   },
 };
 
 const appSlice = createSlice({
-  name: 'app',
+  name: "app",
   initialState,
   reducers: {
     toggleDrawer(state, action: PayloadAction<Drawer>) {

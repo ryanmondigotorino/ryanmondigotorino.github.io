@@ -1,16 +1,22 @@
-import { ButtonWrapper } from 'styles/styled-components/components/button.styled';
+import ButtonWrapper from "styles/styled-components/components/button.styled";
 
 type Props = {
-  type: 'button' | 'submit';
+  type: "button" | "submit";
   className?: string;
   label?: string;
   children?: React.ReactChild;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-const Button: React.FC<Props> = ({ type, className, label, children, onClick }) => {
+};
+const Button: React.FC<Props> = ({
+  type,
+  className,
+  label,
+  children,
+  onClick,
+}) => {
   return (
-    <ButtonWrapper type={type} className={className || ''} onClick={onClick}>
-      {children || label || ''}
+    <ButtonWrapper type={type} className={className || ""} onClick={onClick}>
+      {children || label || ""}
     </ButtonWrapper>
   );
 };

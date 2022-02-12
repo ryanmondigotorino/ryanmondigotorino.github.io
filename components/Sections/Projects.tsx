@@ -1,19 +1,21 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import Link from 'next/link';
-import clsx from 'clsx';
-import { ProjectDataProps } from 'interfaces';
-import { arrayPagination, projectDataSets } from 'utils';
-import { Section, Grid, Project } from 'styles/styled-components/pages/home.styled';
-import { Direction, Text } from 'styles/styled-components/global';
-import { Navigation } from 'styles/styled-components/components/app.styled';
+/* eslint-disable react/no-array-index-key */
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import Link from "next/link";
+import clsx from "clsx";
+import { ProjectDataProps } from "interfaces";
+import { arrayPagination, projectDataSets } from "utils";
+import { Section, Grid } from "styles/styled-components/pages/home.styled";
+import { Direction, Text, Image } from "styles/styled-components/global";
+import { Navigation } from "styles/styled-components/components/app.styled";
 
 const modifiedProjectDataSet: Array<Array<ProjectDataProps>> = arrayPagination(
   projectDataSets
-  .sort((a: { id: number }, b: { id: number }) => Number(b.id) - Number(a.id))
-  .slice()
-  .splice(0, projectDataSets.length)
-  , 3);
+    .sort((a: { id: number }, b: { id: number }) => Number(b.id) - Number(a.id))
+    .slice()
+    .splice(0, projectDataSets.length),
+  3
+);
 
 const Projects: React.FC = () => {
   const [activeProject, setActiveProject] = React.useState<number>(0);
@@ -40,7 +42,7 @@ const Projects: React.FC = () => {
                   <Link key={data.id} passHref href={data.url}>
                     <a href="replace" target="_blank">
                       <Grid.Card>
-                        <Project.Image src={data.image} alt="projects"/>
+                        <Image.Project src={data.image} alt="projects" />
                       </Grid.Card>
                     </a>
                   </Link>
@@ -54,7 +56,7 @@ const Projects: React.FC = () => {
             <Navigation.Button
               key={key}
               type="button"
-              className={clsx('projects', { active: activeProject === key })}
+              className={clsx("projects", { active: activeProject === key })}
               onClick={() => setActiveProject(key)}
             />
           ))}

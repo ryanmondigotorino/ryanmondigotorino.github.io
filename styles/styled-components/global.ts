@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import colors from 'styles/colors';
-import { NavigationAnimation } from 'styles/styled-components/animations';
+import styled from "styled-components";
+import colors from "styles/colors";
+import { NavigationAnimation } from "styles/styled-components/animations";
 
 const Row = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ const TextTitle = styled.h1`
   padding: 0;
   font-size: 24px;
   color: ${colors.white};
-  font-family: 'Prompt';
+  font-family: "Prompt";
   font-weight: 400;
   letter-spacing: 1.08px;
   &.hero {
@@ -61,7 +61,7 @@ const TextSubTitle = styled.p`
       animation: ${NavigationAnimation} 1.9s ease-in;
     }
     &:nth-child(4) {
-      animation: ${NavigationAnimation} 2.0s ease-in;
+      animation: ${NavigationAnimation} 2s ease-in;
     }
   }
   &.label {
@@ -80,6 +80,11 @@ const TextSubTitle = styled.p`
   &.dark {
     color: ${colors.grayTeal[500]};
   }
+  &.about-description {
+    line-height: 30px;
+    letter-spacing: 1.2px;
+    height: max-content;
+  }
 `;
 
 export const Text = {
@@ -93,6 +98,20 @@ const ImageProfile = styled.img`
   border-radius: 99999px;
 `;
 
+const ProjectImage = styled.img`
+  width: 100%;
+  height: calc(100% - 50px);
+  border-radius: 20px;
+`;
+
+const AboutImage = styled.img`
+  width: 450px;
+  height: 550px;
+  border-radius: 20px;
+`;
+
 export const Image = {
   Profile: ImageProfile,
-}
+  Project: ProjectImage,
+  About: AboutImage,
+};
