@@ -16,7 +16,10 @@ import {
 import { Direction, Text, Image } from "styles/styled-components/global";
 import { redirect, SECTIONS } from "utils";
 
-const { APP_NAME, APP_URL, DEVELOPER_NAME, APP_DESCRIPTION } = process.env;
+const { APP_NAME } = process.env;
+const { APP_URL } = process.env;
+const { DEVELOPER_NAME } = process.env;
+const { APP_DESCRIPTION } = process.env;
 
 let ITERATOR = 0;
 const TYPE_SPEED = 100;
