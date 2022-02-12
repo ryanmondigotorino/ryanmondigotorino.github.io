@@ -8,6 +8,7 @@ module.exports = {
   },
   env: {
     APP_URL: process.env.APP_URL,
+    APP_DESCRIPTION: process.env.APP_DESCRIPTION,
     APP_NAME: process.env.APP_NAME,
     FACEBOOK_URL: process.env.FACEBOOK_URL,
     LINKEDIN_URL: process.env.LINKEDIN_URL,

@@ -15,9 +15,7 @@ import {
 } from "styles/styled-components/components/app.styled";
 import { ReactComponent as IconMessage } from "styles/assets/icon-message.svg";
 import { Direction, Text } from "styles/styled-components/global";
-import { redirect } from "utils";
-
-const SECTIONS_ID = ["hero", "experience", "skills", "projects", "about"];
+import { redirect, SECTIONS } from "utils";
 
 const App: NextPage = ({ children }) => {
   const dispatch = useDispatch();
@@ -30,7 +28,7 @@ const App: NextPage = ({ children }) => {
       rootMargin: "0px",
       threshold: 0.5,
     };
-    SECTIONS_ID.forEach((ids) => {
+    SECTIONS.forEach((ids) => {
       const targetElement = document.getElementById(ids);
       if (targetElement) {
         const observer = new IntersectionObserver((entries) => {
@@ -75,7 +73,7 @@ const App: NextPage = ({ children }) => {
         {children}
       </Wrapper.Main>
       <Navigation.Wrapper>
-        {SECTIONS_ID.map((val) => (
+        {SECTIONS.map((val) => (
           <Navigation.Button
             key={val}
             type="button"

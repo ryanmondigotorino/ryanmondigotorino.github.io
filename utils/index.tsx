@@ -200,5 +200,7 @@ export const workExperienceDataSets: Array<WorkExpDataProps> = [
   },
 ];
 
+export const SECTIONS = ["hero", "experience", "skills", "projects", "about"];
+
 const Utilities = () => <></>;
 export default Utilities;

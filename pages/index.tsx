@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import type { NextPage } from "next";
 import Projects from "components/Sections/Projects";
 import Skills from "components/Sections/Skills";
@@ -13,12 +14,9 @@ import {
   Grid,
 } from "styles/styled-components/pages/home.styled";
 import { Direction, Text, Image } from "styles/styled-components/global";
-import { redirect } from "utils";
-import Link from "next/link";
+import { redirect, SECTIONS } from "utils";
 
-const NAME = process.env.DEVELOPER_NAME;
-const { APP_NAME } = process.env;
-const { APP_URL } = process.env;
+const { APP_NAME, APP_URL, DEVELOPER_NAME, APP_DESCRIPTION } = process.env;
 
 let ITERATOR = 0;
 const TYPE_SPEED = 100;
@@ -28,9 +26,12 @@ const Home: NextPage = () => {
     const textSubtitle = document.getElementById(
       "hero-text"
     ) as HTMLHeadElement;
-    if (NAME && textSubtitle.innerHTML.length < NAME.length) {
-      if (ITERATOR < NAME.length) {
-        textSubtitle.innerHTML += NAME.charAt(ITERATOR);
+    if (
+      DEVELOPER_NAME &&
+      textSubtitle.innerHTML.length < DEVELOPER_NAME.length
+    ) {
+      if (ITERATOR < DEVELOPER_NAME.length) {
+        textSubtitle.innerHTML += DEVELOPER_NAME.charAt(ITERATOR);
         ITERATOR++;
         setTimeout(typeWriter, TYPE_SPEED);
       }
@@ -45,12 +46,15 @@ const Home: NextPage = () => {
     <Wrapper>
       <Head>
         <title>{`${APP_NAME} | Home`}</title>
-        <meta
-          name="description"
-          content="Ryan M. Torino | Software Engineer 1 - Hello, I'm Ryan but you may call me thors. Welcome to my portfolio. Let's get connected and keep in touch for future opportunities."
-        />
+        <meta name="description" content={APP_DESCRIPTION} />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="og:title" content={`${APP_NAME} | Home`} />
+        <meta name="og:description" content={APP_DESCRIPTION} />
+        <meta name="og:url" content={APP_URL} />
         <meta name="og:image" content={`${APP_URL}/static/thors.jpeg`} />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href={APP_URL} />
       </Head>
 
       <Section.Container id="hero" className="hero container">
@@ -60,30 +64,14 @@ const Home: NextPage = () => {
             <Text.SubTitle className="hero">Software Engineer</Text.SubTitle>
             <Text.Title id="hero-text" className="hero" />
             <Navigation.Skills className="w-100">
-              <Text.SubTitle
-                className="clickable hero"
-                onClick={() => redirect("experience")}
-              >
-                Experience
-              </Text.SubTitle>
-              <Text.SubTitle
-                className="clickable hero"
-                onClick={() => redirect("skills")}
-              >
-                Skills
-              </Text.SubTitle>
-              <Text.SubTitle
-                className="clickable hero"
-                onClick={() => redirect("projects")}
-              >
-                Projects
-              </Text.SubTitle>
-              <Text.SubTitle
-                className="clickable hero"
-                onClick={() => redirect("about")}
-              >
-                About
-              </Text.SubTitle>
+              {SECTIONS?.filter((val) => val !== "hero").map((section) => (
+                <Text.SubTitle
+                  className="clickable hero"
+                  onClick={() => redirect(section)}
+                >
+                  {section}
+                </Text.SubTitle>
+              ))}
             </Navigation.Skills>
           </Direction.Col>
         </Direction.Row>
