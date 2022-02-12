@@ -7,6 +7,7 @@
     "start": "next start",
     "export": "next export",
     "eslint": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "env:gen": "cp .env.example .env",
     "lint": "npm -s run eslint && npm -s run type-check",
     "prepare": "husky install"
   },
