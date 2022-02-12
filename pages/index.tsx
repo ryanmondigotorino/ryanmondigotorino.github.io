@@ -69,6 +69,7 @@ const Home: NextPage = () => {
             <Navigation.Skills className="w-100">
               {SECTIONS?.filter((val) => val !== "hero").map((section) => (
                 <Text.SubTitle
+                  key={section}
                   className="clickable hero"
                   onClick={() => redirect(section)}
                 >
@@ -108,9 +109,9 @@ const Home: NextPage = () => {
                     extroverted person. I like going out with my peers, friends,
                     or colleagues. I play musical instruments in my past time
                     and practice my skills in web development by making personal
-                    projects. If you were interested to get in touch with me,
-                    feel free to navigate the contact form on this website or
-                    email me at{" "}
+                    projects using various frameworks like, Laravel and Next.Js.
+                    If you were interested to get in touch with me, feel free to
+                    navigate the contact form on this website or email me at{" "}
                     <Link passHref href="mailto:ryanmondigotorino@gmail.com">
                       <a href="replace" className="text-underline">
                         ryanmondigotorino@gmail.com
