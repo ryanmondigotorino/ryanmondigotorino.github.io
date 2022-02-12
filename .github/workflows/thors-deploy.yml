@@ -30,6 +30,7 @@ jobs:
     - run: npm run env:gen
     - run: npm run build
     - run: npm run export
+    - run: npm run generate
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.3
