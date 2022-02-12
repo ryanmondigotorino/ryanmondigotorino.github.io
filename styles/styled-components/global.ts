@@ -84,6 +84,7 @@ const TextSubTitle = styled.p`
     line-height: 30px;
     letter-spacing: 1.2px;
     height: max-content;
+    text-align: justify;
   }
 `;
 
