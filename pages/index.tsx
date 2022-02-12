@@ -112,7 +112,7 @@ const Home: NextPage = () => {
                     2018 up until March 2019, and I was hired full-time employee
                     last August 2019.
                   </Text.SubTitle>
-                  <Text.SubTitle className="light about-description h-max-content">
+                  <Text.SubTitle className="light about-description h-max-content mt-20">
                     Quick personality about myself. I consider myself an
                     extroverted person. I like going out with my peers, friends,
                     or colleagues. I play musical instruments in my past time
