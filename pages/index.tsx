@@ -92,10 +92,10 @@ const Home: NextPage = () => {
       <WorkExperience />
       <Skills isNotSsr={isNotSsr} />
       <Projects />
-      {isNotSsr && (
-        <Section.Container id="about" className="about">
-          <Direction.Col className="container h-100 p-0">
-            <Direction.Col className="h-100 justify-content-center">
+      <Section.Container id="about" className="about">
+        <Direction.Col className="container h-100 p-0">
+          <Direction.Col className="h-100 justify-content-center">
+            {isNotSsr && (
               <Direction.Row className="convertible">
                 <Direction.Row
                   className={clsx("justify-content-center", {
@@ -148,10 +148,10 @@ const Home: NextPage = () => {
                   </Grid.CardContent>
                 </Direction.Row>
               </Direction.Row>
-            </Direction.Col>
+            )}
           </Direction.Col>
-        </Section.Container>
-      )}
+        </Direction.Col>
+      </Section.Container>
       <Footer />
     </Wrapper>
   );
