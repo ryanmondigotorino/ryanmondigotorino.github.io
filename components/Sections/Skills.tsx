@@ -10,9 +10,7 @@ import type { SkillsDataProps } from "interfaces";
 import { media } from "styles/devices";
 import { skillsDataSets, arrayPagination, useMedia } from "utils";
 
-type Props = { isNotSsr: boolean };
-
-const Skills: React.FC<Props> = ({ isNotSsr }) => {
+const Skills: React.FC = () => {
   const isPhone = useMedia(media.strict.phone);
   const isTablet = useMedia(media.strict.tablet);
   const isPortrait = useMedia(media.portrait);
@@ -34,7 +32,7 @@ const Skills: React.FC<Props> = ({ isNotSsr }) => {
     setModifiedSkillsDataSet(data);
   }, [isPhone, isTablet, isPortrait]);
 
-  if ((isPhone || (isTablet && isPortrait)) && isNotSsr) {
+  if (isPhone || (isTablet && isPortrait)) {
     return (
       <Section.Container id="skills" className="w-navigation skills">
         <Direction.Col className="align-items-center justify-content-between h-100">

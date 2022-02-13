@@ -44,7 +44,7 @@ const SectionContainer = styled.section`
       &.about {
         padding: 0 15px;
         width: calc(100% - 30px);
-        height: 1110px;
+        height: 1150px;
       }
     }
   }
@@ -67,7 +67,7 @@ const SectionContainer = styled.section`
     &.about {
       padding: 0 15px;
       width: calc(100% - 30px);
-      height: 1110px;
+      height: 1150px;
     }
   }
 `;
@@ -374,9 +374,27 @@ const GridCardIcon = styled.div`
         }
       }
     }
+    transform: translate(0, -5px);
+    z-index: 1;
+    &::after {
+      opacity: 1;
+    }
     .skill-title {
       color: ${colors.white};
     }
+  }
+  &::after {
+    border-radius: 0.9375em;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: opacity 300ms ease-out 300ms;
+    width: 100%;
+    z-index: -1;
   }
   @media ${media.strict.tablet} {
     @media ${media.portrait} {
