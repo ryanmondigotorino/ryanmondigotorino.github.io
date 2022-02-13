@@ -130,7 +130,7 @@ const Home: NextPage = () => {
                     <Text.SubTitle className="light about-description h-max-content mt-20">
                       Quick personality about myself. I consider myself an
                       extroverted person. I like going out with my peers,
-                      friends, or colleagues. I play musical instruments in my
+                      friends, and colleagues. I play musical instruments in my
                       past time and practice my skills in web development by
                       making personal projects using various frameworks like,
                       Laravel and Next.Js.
