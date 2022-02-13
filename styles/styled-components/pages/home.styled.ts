@@ -86,6 +86,17 @@ const ProjectDetaiilsSection = styled.div`
   padding: 50px 30px;
   opacity: 0;
   transition: 1s;
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      opacity: 1;
+    }
+    @media ${media.landscape} {
+      opacity: 1;
+    }
+  }
+  @media ${device.mobileLg} {
+    opacity: 1;
+  }
 `;
 
 export const Section = {
@@ -161,6 +172,11 @@ const GridContainer = styled.ul`
   }
   @media ${media.strict.tablet} {
     @media ${media.portrait} {
+      &.projects a {
+        &::after {
+          opacity: 1;
+        }
+      }
       &.single-slide {
         grid-template-columns: repeat(1, minmax(0, 1fr));
         margin: 0;
@@ -171,6 +187,9 @@ const GridContainer = styled.ul`
     }
   }
   @media ${device.mobileLg} {
+    &.projects a::after {
+      opacity: 1;
+    }
     &.single-slide {
       grid-template-columns: repeat(1, minmax(0, 1fr));
       margin: 0;
