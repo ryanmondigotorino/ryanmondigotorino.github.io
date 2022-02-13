@@ -30,6 +30,7 @@ const Home: NextPage = () => {
   const isPhone = useMedia(media.strict.phone);
   const isTablet = useMedia(media.strict.tablet);
   const isPortrait = useMedia(media.portrait);
+  const [isNotSsr, setIsNotSsr] = React.useState(false);
 
   const typeWriter = React.useCallback(() => {
     const textSubtitle = document.getElementById(
@@ -50,6 +51,8 @@ const Home: NextPage = () => {
   React.useEffect(() => {
     typeWriter();
   }, [typeWriter]);
+
+  React.useEffect(() => setIsNotSsr(true), []);
 
   return (
     <Wrapper>
@@ -87,63 +90,69 @@ const Home: NextPage = () => {
         </Direction.Row>
       </Section.Container>
       <WorkExperience />
-      <Skills />
+      <Skills isNotSsr={isNotSsr} />
       <Projects />
-      <Section.Container id="about" className="about">
-        <Direction.Col className="container h-100 p-0">
-          <Direction.Col className="h-100 justify-content-center">
-            <Direction.Row className="convertible">
-              <Direction.Row
-                className={clsx("justify-content-center", {
-                  "d-none": !isPhone && !(isTablet && isPortrait),
-                })}
-              >
-                <Text.Title className="heading">About</Text.Title>
+      {isNotSsr && (
+        <Section.Container id="about" className="about">
+          <Direction.Col className="container h-100 p-0">
+            <Direction.Col className="h-100 justify-content-center">
+              <Direction.Row className="convertible">
+                <Direction.Row
+                  className={clsx("justify-content-center", {
+                    "d-none": !isPhone && !(isTablet && isPortrait),
+                  })}
+                >
+                  <Text.Title className="heading">About</Text.Title>
+                </Direction.Row>
+                <Direction.Row className="flex-1">
+                  <Grid.CardContent className="about justify-content-center align-items-center">
+                    <Image.About
+                      src="/static/thors-speaker.jpg"
+                      alt="my-photo"
+                    />
+                  </Grid.CardContent>
+                </Direction.Row>
+                <Direction.Row className="flex-1">
+                  <Grid.CardContent className="about justify-content-center">
+                    <Text.Title
+                      className={clsx("heading mb-30", {
+                        "d-none": isPhone || (isTablet && isPortrait),
+                      })}
+                    >
+                      About
+                    </Text.Title>
+                    <Text.SubTitle className="light about-description h-max-content">
+                      Hello! I&apos;m Ryan M. Torino. I graduated from FEU
+                      Institute of Technology, last August 2019. I&apos;m now
+                      working full-time software engineer at August 99 Inc under
+                      the Oqulo division. I&apos;ve been working with them for
+                      almost 4 years, that includes my internship last September
+                      2018 up until March 2019, and I was hired full-time
+                      employee last August 2019.
+                    </Text.SubTitle>
+                    <Text.SubTitle className="light about-description h-max-content mt-20">
+                      Quick personality about myself. I consider myself an
+                      extroverted person. I like going out with my peers,
+                      friends, or colleagues. I play musical instruments in my
+                      past time and practice my skills in web development by
+                      making personal projects using various frameworks like,
+                      Laravel and Next.Js. If you were interested to get in
+                      touch with me, feel free to navigate the contact form on
+                      this website or email me at{" "}
+                      <Link passHref href="mailto:ryanmondigotorino@gmail.com">
+                        <a href="replace" className="text-underline">
+                          ryanmondigotorino@gmail.com
+                        </a>
+                      </Link>
+                      . Hope we can get along and have a good day 😊
+                    </Text.SubTitle>
+                  </Grid.CardContent>
+                </Direction.Row>
               </Direction.Row>
-              <Direction.Row className="flex-1">
-                <Grid.CardContent className="about justify-content-center align-items-center">
-                  <Image.About src="/static/thors-speaker.jpg" alt="my-photo" />
-                </Grid.CardContent>
-              </Direction.Row>
-              <Direction.Row className="flex-1">
-                <Grid.CardContent className="about justify-content-center">
-                  <Text.Title
-                    className={clsx("heading mb-30", {
-                      "d-none": isPhone || (isTablet && isPortrait),
-                    })}
-                  >
-                    About
-                  </Text.Title>
-                  <Text.SubTitle className="light about-description h-max-content">
-                    Hello! I&apos;m Ryan M. Torino. I graduated from FEU
-                    Institute of Technology, last August 2019. I&apos;m now
-                    working full-time software engineer at August 99 Inc under
-                    the Oqulo division. I&apos;ve been working with them for
-                    almost 4 years, that includes my internship last September
-                    2018 up until March 2019, and I was hired full-time employee
-                    last August 2019.
-                  </Text.SubTitle>
-                  <Text.SubTitle className="light about-description h-max-content mt-20">
-                    Quick personality about myself. I consider myself an
-                    extroverted person. I like going out with my peers, friends,
-                    or colleagues. I play musical instruments in my past time
-                    and practice my skills in web development by making personal
-                    projects using various frameworks like, Laravel and Next.Js.
-                    If you were interested to get in touch with me, feel free to
-                    navigate the contact form on this website or email me at{" "}
-                    <Link passHref href="mailto:ryanmondigotorino@gmail.com">
-                      <a href="replace" className="text-underline">
-                        ryanmondigotorino@gmail.com
-                      </a>
-                    </Link>
-                    . Hope we can get along and have a good day 😊
-                  </Text.SubTitle>
-                </Grid.CardContent>
-              </Direction.Row>
-            </Direction.Row>
+            </Direction.Col>
           </Direction.Col>
-        </Direction.Col>
-      </Section.Container>
+        </Section.Container>
+      )}
       <Footer />
     </Wrapper>
   );

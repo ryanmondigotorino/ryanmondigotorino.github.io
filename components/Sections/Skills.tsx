@@ -10,12 +10,13 @@ import type { SkillsDataProps } from "interfaces";
 import { media } from "styles/devices";
 import { skillsDataSets, arrayPagination, useMedia } from "utils";
 
-const Skills: React.FC = () => {
+type Props = { isNotSsr: boolean };
+
+const Skills: React.FC<Props> = ({ isNotSsr }) => {
   const isPhone = useMedia(media.strict.phone);
   const isTablet = useMedia(media.strict.tablet);
   const isPortrait = useMedia(media.portrait);
   const [activeSection, setActiveSection] = React.useState(0);
-  const [isNotSsr, setIsNotSsr] = React.useState(false);
 
   const [modifiedSkillsDataSet, setModifiedSkillsDataSet] =
     React.useState<Array<Array<SkillsDataProps>>>();
@@ -32,8 +33,6 @@ const Skills: React.FC = () => {
 
     setModifiedSkillsDataSet(data);
   }, [isPhone, isTablet, isPortrait]);
-
-  React.useEffect(() => setIsNotSsr(true), []);
 
   if ((isPhone || (isTablet && isPortrait)) && isNotSsr) {
     return (
