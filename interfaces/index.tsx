@@ -19,6 +19,8 @@ export type ProjectDataProps = {
   id: number;
   url: string;
   image: string;
+  name: string;
+  tech: string;
 };
 
 type WorkDoings = {

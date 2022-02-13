@@ -89,31 +89,43 @@ export const projectDataSets: Array<ProjectDataProps> = [
     id: 0,
     url: "https://iorthotics.com",
     image: "/static/projects/iorthotics.jpg",
+    name: "iOrthotics PTY LTD",
+    tech: "Laravel | MySql",
   },
   {
     id: 1,
     url: "https://real.ph",
     image: "/static/projects/real.jpg",
+    name: "Real PH",
+    tech: "Laravel | MySql",
   },
   {
     id: 2,
     url: "https://coworkerhq.com",
     image: "/static/projects/coworkerhq.jpg",
+    name: "Coworker HQ",
+    tech: "React Next JS | Rest API Nest JS | PostgreSql",
   },
   {
     id: 3,
     url: "https://qtimesoftware.com",
     image: "/static/projects/qtime.jpg",
+    name: "QTime Software",
+    tech: "Laravel | Vue JS | PostgreSql",
   },
   {
     id: 4,
     url: "https://eats.ph",
     image: "/static/projects/eats.jpg",
+    name: "Eats PH",
+    tech: "React Next JS | Rest API Nest JS | PostgreSql",
   },
   {
     id: 5,
     url: "https://access.com",
     image: "/static/projects/access.jpg",
+    name: "Access",
+    tech: "React Next JS | TypeScript | GraphQL | Prisma Node JS | PostgreSql",
   },
 ];
 

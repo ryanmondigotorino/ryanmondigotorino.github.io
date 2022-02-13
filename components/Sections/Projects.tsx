@@ -66,6 +66,14 @@ const Projects: React.FC = () => {
                         <Grid.Card>
                           <Image.Project src={data.image} alt="projects" />
                         </Grid.Card>
+                        <Section.ProjectDetails className="project-details">
+                          <Text.Title className="label mb-10">
+                            {data.name}
+                          </Text.Title>
+                          <Text.SubTitle className="light about-description h-max-content text-start">
+                            {data.tech}
+                          </Text.SubTitle>
+                        </Section.ProjectDetails>
                       </a>
                     </Link>
                   ))}

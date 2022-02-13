@@ -72,8 +72,25 @@ const SectionContainer = styled.section`
   }
 `;
 
+const ProjectDetaiilsSection = styled.div`
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: flex-end;
+  align-items: start;
+  z-index: 2;
+  padding: 50px 30px;
+  opacity: 0;
+  transition: 1s;
+`;
+
 export const Section = {
   Container: SectionContainer,
+  ProjectDetails: ProjectDetaiilsSection,
 };
 
 const NavigationSkills = styled.div`
@@ -108,12 +125,16 @@ const GridContainer = styled.ul`
   &.projects {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     a {
+      position: relative;
       transition: transform 300ms ease-out 300ms;
       &:hover {
         opacity: 1;
         transform: translate(0, -5px);
         z-index: 1;
         cursor: pointer;
+        .project-details {
+          opacity: 1;
+        }
         &::after {
           opacity: 1;
         }
@@ -121,15 +142,20 @@ const GridContainer = styled.ul`
       &::after {
         border-radius: 20px;
         content: "";
-        height: 100%;
+        height: calc(100% - 49px);
         left: 0;
         opacity: 0;
         pointer-events: none;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.9)
+        );
         position: absolute;
         top: 0;
         transition: opacity 300ms ease-out 300ms;
         width: 100%;
-        z-index: -1;
+        z-index: 1;
       }
     }
   }
