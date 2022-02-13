@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
   reactStrictMode: true,
+  target: "serverless",
   eslint: {
     dirs: ['pages', 'components', 'styles/styled-components/*'],
   },
@@ -16,6 +17,14 @@ module.exports = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/:any*",
+        destination: "/",
+      },
+    ];
   },
   webpack: (
     config,

@@ -6,11 +6,21 @@ import Wrapper from "components/App";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 
+const SafeHydrate: React.FC = ({ children }) => {
+  return (
+    <div suppressHydrationWarning>
+      {typeof window === "undefined" ? null : children}
+    </div>
+  );
+};
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Wrapper>
-        <Component {...pageProps} />
+        <SafeHydrate>
+          <Component {...pageProps} />
+        </SafeHydrate>
       </Wrapper>
     </Provider>
   );
