@@ -125,10 +125,7 @@ const Home: NextPage = () => {
                       Hello! I&apos;m Ryan M. Torino. I graduated from FEU
                       Institute of Technology, last August 2019. I&apos;m now
                       working full-time software engineer at August 99 Inc under
-                      the Oqulo division. I&apos;ve been working with them for
-                      almost 4 years, that includes my internship last September
-                      2018 up until March 2019, and I was hired full-time
-                      employee last August 2019.
+                      the Oqulo division.
                     </Text.SubTitle>
                     <Text.SubTitle className="light about-description h-max-content mt-20">
                       Quick personality about myself. I consider myself an
@@ -136,14 +133,17 @@ const Home: NextPage = () => {
                       friends, or colleagues. I play musical instruments in my
                       past time and practice my skills in web development by
                       making personal projects using various frameworks like,
-                      Laravel and Next.Js. If you were interested to get in
-                      touch with me, you are free to email me at{" "}
+                      Laravel and Next.Js.
+                    </Text.SubTitle>
+                    <Text.SubTitle className="light about-description h-max-content mt-20">
+                      If you were interested to get in touch with me, you are
+                      free to email me at{" "}
                       <Link passHref href="mailto:ryanmondigotorino@gmail.com">
                         <a href="replace" className="text-underline">
                           ryanmondigotorino@gmail.com
                         </a>
                       </Link>
-                      . Hope we can get along and have a good day 😊
+                      . I Hope we can get along and have a good day 😊
                     </Text.SubTitle>
                   </Grid.CardContent>
                 </Direction.Row>
