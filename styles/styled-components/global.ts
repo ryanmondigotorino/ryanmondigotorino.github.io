@@ -1,10 +1,23 @@
 import styled from "styled-components";
 import colors from "styles/colors";
+import { device, media } from "styles/devices";
 import { NavigationAnimation } from "styles/styled-components/animations";
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.convertible {
+        flex-direction: column;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    &.convertible {
+      flex-direction: column;
+    }
+  }
 `;
 
 const Col = styled.div`
@@ -40,10 +53,27 @@ const TextTitle = styled.h1`
     color: ${colors.iconBaseColor};
     transition: 300ms;
   }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.heading {
+        margin-bottom: 50px;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    font-size: 18px;
+    &.hero {
+      font-size: 36px;
+    }
+    &.heading {
+      font-size: 24px;
+      margin-bottom: 50px;
+    }
+  }
 `;
 
 const TextSubTitle = styled.p`
-  height: 20px;
+  height: max-content;
   color: ${colors.gray[500]};
   font-weight: 400;
   font-size: 17px;
@@ -86,6 +116,23 @@ const TextSubTitle = styled.p`
     height: max-content;
     text-align: justify;
   }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.about-description {
+        text-align: start;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    font-size: 14px;
+    &.label {
+      font-size: 18px;
+      line-height: 30px;
+    }
+    &.about-description {
+      text-align: start;
+    }
+  }
 `;
 
 export const Text = {
@@ -109,6 +156,16 @@ const AboutImage = styled.img`
   width: 450px;
   height: 550px;
   border-radius: 20px;
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      margin-bottom: 50px;
+    }
+  }
+  @media ${device.mobileLg} {
+    width: 300px;
+    height: 350px;
+    margin-bottom: 50px;
+  }
 `;
 
 export const Image = {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device, media } from "styles/devices";
 import colors from "styles/colors";
 
 export const Wrapper = styled.main`
@@ -30,6 +31,45 @@ const SectionContainer = styled.section`
       }
     }
   }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.skills {
+        background: none;
+        padding: 0;
+        height: 710px;
+      }
+      &.projects {
+        height: 490px;
+      }
+      &.about {
+        padding: 0 15px;
+        width: calc(100% - 30px);
+        height: 1110px;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    &.work-exp {
+      padding: 70px 15px;
+      width: calc(100% - 30px);
+      height: 700px;
+    }
+    &.skills {
+      background: none;
+      padding: 0;
+      height: 710px;
+    }
+    &.projects {
+      padding: 70px 15px;
+      width: calc(100% - 30px);
+      height: 540px;
+    }
+    &.about {
+      padding: 0 15px;
+      width: calc(100% - 30px);
+      height: 1110px;
+    }
+  }
 `;
 
 export const Section = {
@@ -42,6 +82,14 @@ const NavigationSkills = styled.div`
   justify-content: space-evenly;
   height: 50px;
   margin-top: 70px;
+  @media ${device.mobileLg} {
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    p.hero:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
 `;
 
 export const Navigation = {
@@ -85,6 +133,23 @@ const GridContainer = styled.ul`
       }
     }
   }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.single-slide {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin: 0;
+        &__projects {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    &.single-slide {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      margin: 0;
+    }
+  }
 `;
 
 const GridCard = styled.div`
@@ -119,6 +184,36 @@ const GridCard = styled.div`
       z-index: -1;
     }
   }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      &.work-exp {
+        &:hover {
+          pointer-events: none;
+        }
+        &::after {
+          opacity: 1;
+        }
+      }
+      &.skills {
+        background: ${colors.sectionBg};
+        padding: 50px 0;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    &.work-exp {
+      &:hover {
+        pointer-events: none;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+    &.skills {
+      background: ${colors.sectionBg};
+      padding: 30px 0;
+    }
+  }
 `;
 
 const GridCardContent = styled.div`
@@ -147,6 +242,28 @@ const GridCardContent = styled.div`
   &.about {
     padding: 0;
   }
+  @media ${media.strict.tablet} {
+    a {
+      margin-bottom: 40px;
+    }
+    &.bar-skills {
+      padding: 0;
+      align-items: center;
+    }
+  }
+  @media ${device.mobileLg} {
+    &.skills-icons {
+      justify-content: unset;
+      width: auto;
+      a {
+        margin-bottom: 40px;
+      }
+    }
+    &.bar-skills {
+      padding: 0;
+      align-items: center;
+    }
+  }
 `;
 
 const GridCardList = styled.ul`
@@ -172,6 +289,26 @@ const GridCardList = styled.ul`
       width: 1em;
       margin-left: -1em;
       font-size: 35px;
+    }
+  }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+  @media ${device.mobileLg} {
+    width: 100%;
+    max-width: 300px;
+    padding-left: 30px;
+    &.default {
+      justify-content: space-evenly;
+    }
+    li {
+      font-size: 14px;
+      &.work-exp::before {
+        font-size: 30px;
+      }
     }
   }
 `;
@@ -213,6 +350,64 @@ const GridCardIcon = styled.div`
     }
     .skill-title {
       color: ${colors.white};
+    }
+  }
+  @media ${media.strict.tablet} {
+    @media ${media.portrait} {
+      .icon {
+        &-graphql {
+          color: ${colors.iconGraphQl};
+        }
+        &-laravel {
+          color: ${colors.iconLaravel};
+        }
+        &-react {
+          color: ${colors.iconReact};
+        }
+        &-prisma {
+          color: ${colors.iconPrisma};
+        }
+        &-nodejs {
+          color: ${colors.iconNodeJs};
+        }
+        &-vue path {
+          fill: ${colors.iconVueFirst};
+          &:last-child {
+            fill: ${colors.iconVueLast};
+          }
+        }
+      }
+      &:hover {
+        pointer-events: none;
+      }
+    }
+  }
+  @media ${device.mobileLg} {
+    .icon {
+      &-graphql {
+        color: ${colors.iconGraphQl};
+      }
+      &-laravel {
+        color: ${colors.iconLaravel};
+      }
+      &-react {
+        color: ${colors.iconReact};
+      }
+      &-prisma {
+        color: ${colors.iconPrisma};
+      }
+      &-nodejs {
+        color: ${colors.iconNodeJs};
+      }
+      &-vue path {
+        fill: ${colors.iconVueFirst};
+        &:last-child {
+          fill: ${colors.iconVueLast};
+        }
+      }
+    }
+    &:hover {
+      pointer-events: none;
     }
   }
 `;

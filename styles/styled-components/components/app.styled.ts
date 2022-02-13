@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "styles/colors";
+import { device } from "styles/devices";
 import * as AN from "../animations";
 
 const ContainerWrapper = styled.div`
@@ -102,6 +103,9 @@ const MessageButton = styled.button`
     outline: none;
     outline-color: transparent;
   }
+  @media ${device.mobileLg} {
+    right: 20px;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -125,6 +129,14 @@ const NavigationWrapper = styled.div`
   button {
     &:not(:last-child) {
       margin-bottom: 20px;
+    }
+  }
+  @media ${device.mobileLg} {
+    right: 15px;
+    button {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
   }
 `;
@@ -171,6 +183,16 @@ const HeaderContent = styled.div`
   flex-direction: row;
   width: 100%;
   padding-top: 70px;
+  &.social {
+    @media ${device.mobileLg} {
+      justify-content: center;
+    }
+  }
+  &.get-in-touch {
+    @media ${device.mobileLg} {
+      display: none;
+    }
+  }
 `;
 
 export const Header = {

@@ -13,8 +13,10 @@ import {
   Navigation,
   Grid,
 } from "styles/styled-components/pages/home.styled";
+import { media } from "styles/devices";
 import { Direction, Text, Image } from "styles/styled-components/global";
-import { redirect, SECTIONS } from "utils";
+import { redirect, SECTIONS, useMedia } from "utils";
+import clsx from "clsx";
 
 const { APP_NAME } = process.env;
 const { APP_URL } = process.env;
@@ -25,6 +27,10 @@ let ITERATOR = 0;
 const TYPE_SPEED = 100;
 
 const Home: NextPage = () => {
+  const isPhone = useMedia(media.strict.phone);
+  const isTablet = useMedia(media.strict.tablet);
+  const isPortrait = useMedia(media.portrait);
+
   const typeWriter = React.useCallback(() => {
     const textSubtitle = document.getElementById(
       "hero-text"
@@ -84,17 +90,30 @@ const Home: NextPage = () => {
       <Skills />
       <Projects />
       <Section.Container id="about" className="about">
-        <Direction.Col className="container h-100">
-          <Direction.Col className="h-100">
-            <Grid.Container className="h-100 m-0">
-              <Grid.Card>
+        <Direction.Col className="container h-100 p-0">
+          <Direction.Col className="h-100 justify-content-center">
+            <Direction.Row className="convertible">
+              <Direction.Row
+                className={clsx("justify-content-center", {
+                  "d-none": !isPhone && !(isTablet && isPortrait),
+                })}
+              >
+                <Text.Title className="heading">About</Text.Title>
+              </Direction.Row>
+              <Direction.Row className="flex-1">
                 <Grid.CardContent className="about justify-content-center align-items-center">
                   <Image.About src="/static/thors-speaker.jpg" alt="my-photo" />
                 </Grid.CardContent>
-              </Grid.Card>
-              <Grid.Card>
+              </Direction.Row>
+              <Direction.Row className="flex-1">
                 <Grid.CardContent className="about justify-content-center">
-                  <Text.Title className="heading mb-30">About</Text.Title>
+                  <Text.Title
+                    className={clsx("heading mb-30", {
+                      "d-none": isPhone || (isTablet && isPortrait),
+                    })}
+                  >
+                    About
+                  </Text.Title>
                   <Text.SubTitle className="light about-description h-max-content">
                     Hello! I&apos;m Ryan M. Torino. I graduated from FEU
                     Institute of Technology, last August 2019. I&apos;m now
@@ -120,8 +139,8 @@ const Home: NextPage = () => {
                     . Hope we can get along and have a good day 😊
                   </Text.SubTitle>
                 </Grid.CardContent>
-              </Grid.Card>
-            </Grid.Container>
+              </Direction.Row>
+            </Direction.Row>
           </Direction.Col>
         </Direction.Col>
       </Section.Container>

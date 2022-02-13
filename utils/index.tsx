@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-useless-fragment */
+import React from "react";
 import {
   SkillsDataProps,
   ProjectDataProps,
@@ -152,19 +153,15 @@ export const workExperienceDataSets: Array<WorkExpDataProps> = [
       },
       {
         id: 1,
-        description: "Conduct training for new developers and interns.",
-      },
-      {
-        id: 2,
         description:
           "Attending Scrum sessions, Sprint planning, and Retrospective.",
       },
       {
-        id: 3,
+        id: 2,
         description: "Participate in Design Refinements.",
       },
       {
-        id: 4,
+        id: 3,
         description: "Participate in ERD Planning and project setup.",
       },
     ],
@@ -201,6 +198,49 @@ export const workExperienceDataSets: Array<WorkExpDataProps> = [
 ];
 
 export const SECTIONS = ["hero", "experience", "skills", "projects", "about"];
+
+export const isBrowser = typeof window !== "undefined";
+
+export const useMedia = (query: string, defaultState = false) => {
+  const [state, setState] = React.useState(
+    isBrowser ? () => window.matchMedia(query).matches : defaultState
+  );
+
+  React.useEffect(() => {
+    let mounted = true;
+    const mql = window.matchMedia(query);
+    const onChange = () => {
+      if (!mounted) {
+        return;
+      }
+      setState(!!mql.matches);
+    };
+
+    if ("addListener" in mql) {
+      mql.addListener(onChange);
+    }
+
+    if ("addEventListener" in mql) {
+      mql.addEventListener("change", onChange);
+    }
+
+    setState(mql.matches);
+
+    return () => {
+      mounted = false;
+
+      if ("addListener" in mql) {
+        mql.removeListener(onChange);
+      }
+
+      if ("addEventListener" in mql) {
+        mql.removeEventListener("change", onChange);
+      }
+    };
+  }, [query]);
+
+  return state;
+};
 
 const Utilities = () => <></>;
 export default Utilities;

@@ -1,11 +1,8 @@
 import React from "react";
-import type { NextPage } from "next";
 import clsx from "clsx";
 import smoothscroll from "smoothscroll-polyfill";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
-import { toggleDrawer } from "redux/appSlice";
-import Drawer from "components/Drawer";
 import Social from "components/Utilities/Social";
 import {
   Wrapper,
@@ -16,9 +13,9 @@ import {
 import { ReactComponent as IconMessage } from "styles/assets/icon-message.svg";
 import { Direction, Text } from "styles/styled-components/global";
 import { redirect, SECTIONS } from "utils";
+import Link from "next/link";
 
-const App: NextPage = ({ children }) => {
-  const dispatch = useDispatch();
+const App: React.FC = ({ children }) => {
   const { drawer } = useSelector((state: RootState) => state.systemApp);
   const [activeSection, setActiveSection] = React.useState<string>("hero");
 
@@ -54,19 +51,16 @@ const App: NextPage = ({ children }) => {
       <Wrapper.Main className={clsx({ "active-drawer": drawer?.isVisible })}>
         <Header.Wrapper id="header">
           <Direction.Row className="container justify-content-between align-items-center">
-            <Header.Content>
+            <Header.Content className="social">
               <Social />
             </Header.Content>
-            <Header.Content className="justify-content-end">
-              <Direction.Row
-                className="clickable"
-                onClick={() =>
-                  dispatch(toggleDrawer({ isVisible: true, action: "open" }))
-                }
-              >
-                <IconMessage className="icon icon-message mr-10" />
-                <Text.SubTitle>Get in Touch</Text.SubTitle>
-              </Direction.Row>
+            <Header.Content className="justify-content-end get-in-touch">
+              <Link passHref href="mailto:ryanmondigotorino@gmail.com">
+                <Direction.Row className="clickable">
+                  <IconMessage className="icon icon-message mr-10" />
+                  <Text.SubTitle>Get in Touch</Text.SubTitle>
+                </Direction.Row>
+              </Link>
             </Header.Content>
           </Direction.Row>
         </Header.Wrapper>
@@ -85,15 +79,11 @@ const App: NextPage = ({ children }) => {
           />
         ))}
       </Navigation.Wrapper>
-      <ButtonApp.Message
-        type="button"
-        onClick={() =>
-          dispatch(toggleDrawer({ isVisible: true, action: "open" }))
-        }
-      >
-        <IconMessage className="icon icon-message" />
-      </ButtonApp.Message>
-      <Drawer />
+      <Link passHref href="mailto:ryanmondigotorino@gmail.com">
+        <ButtonApp.Message type="button">
+          <IconMessage className="icon icon-message" />
+        </ButtonApp.Message>
+      </Link>
     </Wrapper.Container>
   );
 };
