@@ -70,6 +70,11 @@ const TextTitle = styled.h1`
       margin-bottom: 50px;
     }
   }
+  @media ${device.mobileXs} {
+    &.hero {
+      font-size: 30px;
+    }
+  }
 `;
 
 const TextSubTitle = styled.p`

@@ -197,7 +197,6 @@ const GridCard = styled.div`
     &::after {
       border-radius: 0.9375em;
       background: ${colors.secondary};
-      box-shadow: 0px 6px 9px #0000004b;
       content: "";
       height: 100%;
       left: 0;
