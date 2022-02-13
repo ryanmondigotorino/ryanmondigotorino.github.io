@@ -137,8 +137,7 @@ const Home: NextPage = () => {
                       past time and practice my skills in web development by
                       making personal projects using various frameworks like,
                       Laravel and Next.Js. If you were interested to get in
-                      touch with me, feel free to navigate the contact form on
-                      this website or email me at{" "}
+                      touch with me, you are free to email me at{" "}
                       <Link passHref href="mailto:ryanmondigotorino@gmail.com">
                         <a href="replace" className="text-underline">
                           ryanmondigotorino@gmail.com
