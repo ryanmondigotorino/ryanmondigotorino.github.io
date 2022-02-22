@@ -7,6 +7,8 @@ import Meta from "components/Utilities/Meta";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 
+// Safe Wrapper
+
 const SafeHydrate: React.FC = ({ children }) => {
   return (
     <div suppressHydrationWarning>
