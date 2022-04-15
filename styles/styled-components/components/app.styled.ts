@@ -132,12 +132,7 @@ const NavigationWrapper = styled.div`
     }
   }
   @media ${device.mobileLg} {
-    right: 15px;
-    button {
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-    }
+    display: none;
   }
 `;
 
