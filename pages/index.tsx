@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-plusplus */
 import React from "react";
 import Link from "next/link";
@@ -110,11 +111,12 @@ const Home: NextPage = () => {
                     the Oqulo division.
                   </Text.SubTitle>
                   <Text.SubTitle className="light about-description h-max-content mt-20">
-                    Quick personality about myself. I consider myself an
-                    extroverted person. I like going out with my peers, friends,
-                    and colleagues. I play musical instruments in my past time
-                    and practice my skills in web development by making personal
-                    projects using various frameworks like, Laravel and Next.Js.
+                    A brief summary of my character. I'm an outgoing individual.
+                    I enjoy socializing with my classmates, colleagues, and
+                    friends. In my spare time, I enjoy playing musical
+                    instruments and honing my web programming abilities by
+                    creating personal projects with frameworks such as Laravel
+                    and Next.Js.
                   </Text.SubTitle>
                   <Text.SubTitle className="light about-description h-max-content mt-20">
                     If you were interested to get in touch with me, you are free
