@@ -31,27 +31,33 @@ const Home: NextPage = () => {
     const textSubtitle = document.getElementById(
       "hero-text"
     ) as HTMLHeadElement;
-    if (
-      DEVELOPER_NAME &&
-      textSubtitle.innerHTML.length < DEVELOPER_NAME.length
-    ) {
+    if (DEVELOPER_NAME) {
       if (ITERATOR < DEVELOPER_NAME.length) {
         textSubtitle.innerHTML += DEVELOPER_NAME.charAt(ITERATOR);
         ITERATOR++;
         setTimeout(typeWriter, TYPE_SPEED);
+      } else {
+        setTimeout(() => {
+          ITERATOR = 0;
+          textSubtitle.innerHTML = "";
+          typeWriter();
+        }, 2000);
       }
     }
   }, []);
 
   React.useEffect(() => {
     typeWriter();
+    return () => {
+      clearTimeout();
+    };
   }, [typeWriter]);
 
   return (
     <Wrapper>
       <Section.Container id="hero" className="hero container">
         <Direction.Row className="w-100 h-100 justify-content-center align-items-center">
-          <Direction.Col className="align-items-center w-800">
+          <Direction.Col className="align-items-center w-620">
             <Image.Profile src="/static/thors.jpeg" className="mb-50" />
             <Text.SubTitle className="hero">Software Engineer</Text.SubTitle>
             <Text.Title id="hero-text" className="hero" />
