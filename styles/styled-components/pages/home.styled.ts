@@ -187,8 +187,11 @@ const GridContainer = styled.ul`
     }
   }
   @media ${device.mobileLg} {
-    &.projects a::after {
-      opacity: 1;
+    &.projects a {
+      max-height: 440px;
+      &::after {
+        opacity: 1;
+      }
     }
     &.single-slide {
       grid-template-columns: repeat(1, minmax(0, 1fr));
