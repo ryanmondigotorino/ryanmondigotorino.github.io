@@ -71,3 +71,12 @@ export const NavigationAnimation = keyframes`
   from { opacity: 0; padding-top: 300px; }
   to { opacity: 1; padding-top: 0; }
 `;
+
+export const caretAnimation = keyframes`
+80% {
+  color: transparent;
+}
+100% {
+  color: white;
+}
+`;

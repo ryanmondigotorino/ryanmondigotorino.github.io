@@ -13,55 +13,25 @@ import {
   Navigation,
   Grid,
 } from "styles/styled-components/pages/home.styled";
+import MovingText from "components/MovingText";
 import { media } from "styles/devices";
 import { Direction, Text, Image } from "styles/styled-components/global";
 import { redirect, SECTIONS, useMedia } from "utils";
 import clsx from "clsx";
-
-const { DEVELOPER_NAME } = process.env;
-
-let ITERATOR = 0;
-const TYPE_SPEED = 100;
 
 const Home: NextPage = () => {
   const isPhone = useMedia(media.strict.phone);
   const isTablet = useMedia(media.strict.tablet);
   const isPortrait = useMedia(media.portrait);
 
-  const typeWriter = React.useCallback(() => {
-    const textSubtitle = document.getElementById(
-      "hero-text"
-    ) as HTMLHeadElement;
-    if (DEVELOPER_NAME) {
-      if (ITERATOR < DEVELOPER_NAME.length) {
-        textSubtitle.innerHTML += DEVELOPER_NAME.charAt(ITERATOR);
-        ITERATOR++;
-        setTimeout(typeWriter, TYPE_SPEED);
-      } else {
-        setTimeout(() => {
-          ITERATOR = 0;
-          textSubtitle.innerHTML = "";
-          typeWriter();
-        }, 2000);
-      }
-    }
-  }, []);
-
-  React.useEffect(() => {
-    typeWriter();
-    return () => {
-      clearTimeout();
-    };
-  }, [typeWriter]);
-
   return (
     <Wrapper>
       <Section.Container id="hero" className="hero container">
         <Direction.Row className="w-100 h-100 justify-content-center align-items-center">
-          <Direction.Col className="align-items-center w-620">
+          <Direction.Col className="align-items-center w-660">
             <Image.Profile src="/static/thors.jpeg" className="mb-50" />
             <Text.SubTitle className="hero">Software Engineer</Text.SubTitle>
-            <Text.Title id="hero-text" className="hero" />
+            <MovingText />
             <Navigation.Skills className="w-100">
               {SECTIONS?.filter((val) => val !== "hero").map((section) => (
                 <Text.SubTitle

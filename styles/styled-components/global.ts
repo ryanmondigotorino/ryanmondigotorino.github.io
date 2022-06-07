@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import colors from "styles/colors";
 import { device, media } from "styles/devices";
-import { NavigationAnimation } from "styles/styled-components/animations";
+import {
+  NavigationAnimation,
+  caretAnimation,
+} from "styles/styled-components/animations";
 
 const Row = styled.div`
   display: flex;
@@ -178,3 +181,7 @@ export const Image = {
   Project: ProjectImage,
   About: AboutImage,
 };
+
+export const Caret = styled.span`
+  animation: ${caretAnimation} 800ms ease-out infinite;
+`;
