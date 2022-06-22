@@ -165,15 +165,19 @@ export const workExperienceDataSets: Array<WorkExpDataProps> = [
       },
       {
         id: 1,
+        description: "Constructing API routes and backend services",
+      },
+      {
+        id: 2,
         description:
           "Attending Scrum sessions, Sprint planning, and Retrospective.",
       },
       {
-        id: 2,
+        id: 3,
         description: "Participate in Design Refinements.",
       },
       {
-        id: 3,
+        id: 4,
         description: "Participate in ERD Planning and project setup.",
       },
     ],
@@ -190,20 +194,27 @@ export const workExperienceDataSets: Array<WorkExpDataProps> = [
       },
       {
         id: 1,
-        description: "Conduct training for new developers and interns.",
+        description: "Constructing API routes and backend services",
       },
       {
         id: 2,
-        description:
-          "Attending Scrum sessions, Sprint planning, and Retrospective.",
+        description: "Conduct training for new developers and interns.",
       },
       {
         id: 3,
-        description: "Participate in Design Refinements.",
+        description: "Attending Scrum sessions",
       },
       {
         id: 4,
-        description: "Participate in ERD Planning and project setup.",
+        description: "Leading Sprint planning, or Retrospective.",
+      },
+      {
+        id: 5,
+        description: "Participating in Design Refinements.",
+      },
+      {
+        id: 6,
+        description: "Leading ERD Planning and project setup.",
       },
     ],
   },
