@@ -52,7 +52,7 @@ const SectionContainer = styled.section`
     &.work-exp {
       padding: 70px 15px;
       width: calc(100% - 30px);
-      height: 700px;
+      height: 750px;
     }
     &.skills {
       background: none;
