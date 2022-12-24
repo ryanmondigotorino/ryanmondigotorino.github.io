@@ -160,10 +160,17 @@ const ProjectImage = styled.img`
   border-radius: 20px;
 `;
 
-const AboutImage = styled.img`
+interface AboutProps {
+  image: string;
+}
+
+const AboutImage = styled.div<AboutProps>`
   width: 450px;
   height: 550px;
   border-radius: 20px;
+  background-image: url(${({ image }) => image || ""});
+  background-position: center;
+  background-size: cover;
   @media ${media.strict.tablet} {
     @media ${media.portrait} {
       margin-bottom: 50px;

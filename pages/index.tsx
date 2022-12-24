@@ -62,7 +62,7 @@ const Home: NextPage = () => {
               </Direction.Row>
               <Direction.Row className="flex-1">
                 <Grid.CardContent className="about justify-content-center align-items-center">
-                  <Image.About src="/static/thors-speaker.jpg" alt="my-photo" />
+                  <Image.About image="/static/thors-talk.jpg" />
                 </Grid.CardContent>
               </Direction.Row>
               <Direction.Row className="flex-1">
