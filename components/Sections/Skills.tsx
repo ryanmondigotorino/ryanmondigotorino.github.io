@@ -10,6 +10,10 @@ import type { SkillsDataProps } from "interfaces";
 import { media } from "styles/devices";
 import { skillsDataSets, arrayPagination, useMedia } from "utils";
 
+import { getAnimatorVariant } from "utils/animatorVariants";
+import type { Variants } from "framer-motion";
+import Animator from "components/Animator";
+
 const Skills: React.FC = () => {
   const isPhone = useMedia(media.strict.phone);
   const isTablet = useMedia(media.strict.tablet);
@@ -126,47 +130,51 @@ const Skills: React.FC = () => {
         <Direction.Col className="h-100">
           <Text.Title className="heading">Skills</Text.Title>
           <Grid.Container className="h-100">
-            <Grid.Card>
-              <Grid.CardContent>
-                <Grid.CardList className="default h-100">
-                  {skillsDataSets
-                    .sort((a, b) => Number(a.id) - Number(b.id))
-                    .map((val) => (
-                      <li key={val.id}>
-                        <Text.SubTitle className="light">
-                          {val.label}
-                        </Text.SubTitle>
-                        <Bar width={val.percentage}>
-                          <div className="fill" />
-                        </Bar>
-                      </li>
-                    ))}
-                </Grid.CardList>
-              </Grid.CardContent>
-            </Grid.Card>
-            <Grid.Card>
-              <Grid.CardContent className="skills-icons">
-                {modifiedSkillsDataSet?.map((baseDataSet, key) => (
-                  <Direction.Col
-                    key={key}
-                    className={clsx({ "justify-content-end": key === 1 })}
-                  >
-                    {baseDataSet?.map((value) => (
-                      <Link key={value.id} passHref href={value.url}>
-                        <a href="replace" target="_blank">
-                          <Grid.CardIcon>
-                            {value.icon}
-                            <Text.Title className="skill-title">
-                              {value.label}
-                            </Text.Title>
-                          </Grid.CardIcon>
-                        </a>
-                      </Link>
-                    ))}
-                  </Direction.Col>
-                ))}
-              </Grid.CardContent>
-            </Grid.Card>
+            <Animator variants={getAnimatorVariant(0) as Variants}>
+              <Grid.Card>
+                <Grid.CardContent>
+                  <Grid.CardList className="default h-100">
+                    {skillsDataSets
+                      .sort((a, b) => Number(a.id) - Number(b.id))
+                      .map((val) => (
+                        <li key={val.id}>
+                          <Text.SubTitle className="light">
+                            {val.label}
+                          </Text.SubTitle>
+                          <Bar width={val.percentage}>
+                            <div className="fill" />
+                          </Bar>
+                        </li>
+                      ))}
+                  </Grid.CardList>
+                </Grid.CardContent>
+              </Grid.Card>
+            </Animator>
+            <Animator variants={getAnimatorVariant(2) as Variants}>
+              <Grid.Card>
+                <Grid.CardContent className="skills-icons">
+                  {modifiedSkillsDataSet?.map((baseDataSet, key) => (
+                    <Direction.Col
+                      key={key}
+                      className={clsx({ "justify-content-end": key === 1 })}
+                    >
+                      {baseDataSet?.map((value) => (
+                        <Link key={value.id} passHref href={value.url}>
+                          <a href="replace" target="_blank">
+                            <Grid.CardIcon>
+                              {value.icon}
+                              <Text.Title className="skill-title">
+                                {value.label}
+                              </Text.Title>
+                            </Grid.CardIcon>
+                          </a>
+                        </Link>
+                      ))}
+                    </Direction.Col>
+                  ))}
+                </Grid.CardContent>
+              </Grid.Card>
+            </Animator>
           </Grid.Container>
         </Direction.Col>
         <Direction.Row className="justify-content-center mt-50 d-none">
