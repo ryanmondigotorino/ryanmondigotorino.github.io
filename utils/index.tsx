@@ -122,10 +122,31 @@ export const projectDataSets: Array<ProjectDataProps> = [
   },
   {
     id: 5,
+    url: "https://www.qspaceapp.com/",
+    image: "/static/projects/qspace-app.jpg",
+    name: "QSpace APP",
+    tech: "Vue JS | Express JS | PostgreSql",
+  },
+  {
+    id: 6,
     url: "https://access.com",
     image: "/static/projects/access.jpg",
     name: "Access",
     tech: "React Next JS | TypeScript | GraphQL | Prisma Node JS | PostgreSql",
+  },
+  {
+    id: 7,
+    url: "https://suite.real.ph",
+    image: "/static/projects/suite-real.jpg",
+    name: "Suite Real.PH",
+    tech: "React Next JS | TypeScript | GraphQL | Prisma Node JS | PostgreSql",
+  },
+  {
+    id: 8,
+    url: "https://builder.real.ph",
+    image: "/static/projects/builder-real.png",
+    name: "Real.ph Web Builder",
+    tech: "React Next JS | TypeScript | GraphQL | TailwindCSS | Prisma Node JS | PostgreSql",
   },
 ];
 
